@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/04 12:16:54 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/04/04 12:17:03 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-
+/*
 void	ft_shit(const char *format)
 {
 	while (*format)
@@ -156,6 +168,7 @@ void	ft_control_string_checker(const char *format)
 		format++;
 	}
 }
+*/
 
 static int	ft_print_arg(char **str, va_list *lst)
 {
