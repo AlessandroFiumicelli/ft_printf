@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 17:04:06 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/04 13:04:40 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/04/04 18:21:15 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,23 @@ void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr(int n);
 void			ft_putnbr_fd(int n, int fd);
-void			ft_print_words_tables(char **tab);
-void			ft_print_words_tables_fd(char **tab, int fd);
-size_t			ft_strnlen(const char *s, size_t maxlen);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+// Bonus function
 size_t			ft_lstlen(t_list *alst);
+void			ft_print_words_tables(char **tab);
+void			ft_print_words_tables_fd(char **tab, int fd);
+size_t			ft_strnlen(const char *s, size_t maxlen);
 char			*ft_custom_strcat(char *dest, const char *src);
 char			*ft_custom_strcpy(char *dst, const char *src);
 size_t			ft_custom_strlen(const char *s);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
+int				ft_abs(int nb);
 
 #endif

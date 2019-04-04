@@ -6,15 +6,45 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:16:31 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/04 12:44:29 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/04/04 13:28:55 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #incldue "ft_printf.h"
 
+static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
+{
+	if (*str == '.')
+	{
+		
+	}
+	else if (ft_isdigit(*str) || *str == '*')
+	{
+
+	}
+	return (0);
+}
+
 static int	ft_len_parser(char *str, t_arg *arg)
 {
-
+	if (*str == 'h' && *(str + 1) == 'h')
+	{
+		arg->length_mod = ft_max(arg->length_mod, hh);
+		return (2);
+	}
+	else if (*str == 'l' && *(str + 1) == 'l')
+	{
+		arg->length_mod = ft_max(arg->length_mod, ll);
+		return (2);
+	}
+	else if (*str == 'h' || *str == 'l')
+	{
+		if (*str == 'h')
+			arg->length_mod = ft_max(arg->length_mod, h);
+		else if (*str == 'l')
+			arg->length_mod = ft_max(arg->length_mod, l);
+		return (1);
+	}
 }
 
 static int	ft_flag_parser(char *str, t_arg *arg)

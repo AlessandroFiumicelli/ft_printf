@@ -3,6 +3,6 @@
 
 int	main(void)
 {
-	printf("\a");
+	printf("%-8.2blf\a", 44.44);
 	return (0);
 }
