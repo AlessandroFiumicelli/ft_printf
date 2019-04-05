@@ -17,16 +17,16 @@ static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
 	if (*str == '.')
 	{
 		arg->prec_set = 1;
-		arg->precision = (str[1] == '*') ? get_int_arg(lst) : ft_atoi(str);
+		arg->precision = (str[1] == '*') ? ft_get_int_arg(lst) : ft_atoi(str);
 		arg->precision = (arg->precision < 0) ? 0 : arg->precision;
-		return (1 + idigts(arg->precision, 10) - ft_isdigit(str[1] ? 0 : 1));
+		return (1 + ft_int_dgt_cnt(arg->precision, 10) - ft_isdigit(str[1] ? 0 : 1));
 	}
 	else if (ft_isdigit(*str) || *str == '*')
 	{
-		arg->width = (str[1] == '*') ? get_int_arg(lst) : ft_atoi(str);
+		arg->width = (str[1] == '*') ? ft_get_int_arg(lst) : ft_atoi(str);
 		if (arg->width < 0 && (arg->width = ft_abs(arg->width)))
 			arg->flag_left = 1;
-		return (ft_idigts(arg->width, 10));
+		return (ft_int_dgt_cnt(arg->width, 10));
 	}
 	return (0);
 }

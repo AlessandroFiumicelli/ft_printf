@@ -13,6 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
+# include <stdint.h>
 # include "libft/include/libft.h"
 # define FT_PRINTF_TYPE "%cCdiIefgGosSuUxXpbrk"
 # define FT_PRINTF_CONVERSION "#0-+ *.%cCdiIefgGosSuUxXpbrkhlL0123456789"
