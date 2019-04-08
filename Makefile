@@ -16,7 +16,7 @@ OUTPUT_OPTION = -MMD -MP -MF $(patsubst %.o,.d/%.d,$(notdir $@)) -o $@
 
 obj/%.o: srcs/%.c
 	@ mkdir -p obj/
-	@ mdir -p .d/
+	@ mkdir -p .d/
 	$(COMPILE.c) $(OUTPUT_OPTION) $< -I./includes
 
 NAME = libftprintf.a

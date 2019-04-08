@@ -175,7 +175,7 @@ static int	ft_print_arg(char **str, va_list *lst)
 	t_arg	arg;
 	int	len;
 
-	ft_bzero(&arg, sizeof(t_arg);
+	ft_bzero(&arg, sizeof(t_arg));
 	len = ft_printf_parse_arg(*str, &arg, lst);
 	ft_printf_handler(&arg, lst);
 	*str += len;
@@ -191,7 +191,7 @@ int	ft_printf(const char *format, ...)
 	cursor = (char *)format;
 	out = 0;
 	va_start(lst, format);
-	while (*control)
+	while (*cursor)
 	{
 		if (*cursor == '%')
 			out += ft_print_arg(&cursor, &lst);
@@ -201,6 +201,6 @@ int	ft_printf(const char *format, ...)
 			out++;
 		}
 	}
-	va_end(args);
+	va_end(lst);
 	return (out);
 }

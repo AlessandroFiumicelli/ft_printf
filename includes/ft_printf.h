@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdint.h>
-# include "libft/include/libft.h"
+# include "../libft/include/libft.h"
 # define FT_PRINTF_TYPE "%cCdiIefgGosSuUxXpbrk"
 # define FT_PRINTF_CONVERSION "#0-+ *.%cCdiIefgGosSuUxXpbrkhlL0123456789"
 
@@ -37,7 +37,7 @@ typedef struct	s_arg
 		h,
 		l,
 		ll
-	}		lenth_mod;
+	}		length_mod;
 	char		type;
 	int		size;
 }				t_arg;
@@ -47,7 +47,7 @@ int				ft_printf_handler(t_arg *arg, va_list *lst);
 
 // Handlers
 
-int				ft_print_char(t_arg *arg, va_list *lst)
+int				ft_print_char(t_arg *arg, va_list *lst);
 int				ft_print_wchar(t_arg *arg, va_list *lst);
 int				ft_print_string(t_arg *arg, va_list *lst);
 int				ft_print_wstring(t_arg *arg, va_list *lst);

@@ -11,7 +11,7 @@ typedef struct		s_handler
 	t_func	f;
 }			t_handler;
 
-t_handler		c_table[]
+t_handler		c_table[] =
 {
 	{'%', &ft_putchar},
 	{'c', &ft_putchar},

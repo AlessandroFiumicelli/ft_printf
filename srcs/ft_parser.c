@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#incldue "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
 {
@@ -51,6 +51,7 @@ static int	ft_len_parser(char *str, t_arg *arg)
 			arg->length_mod = ft_max(arg->length_mod, l);
 		return (1);
 	}
+	return (0);
 }
 
 static int	ft_flag_parser(char *str, t_arg *arg)
@@ -78,12 +79,12 @@ static int	ft_parser(char *str, t_arg *arg, int len, va_list *lst)
 	i = 0;
 	while (i < len)
 	{
-		if ((cnt = ft_flag_parser(str + i, arg) && (i += cnt))
+		if ((cnt = ft_flag_parser(str + i, arg) && (i += cnt)))
 			continue ;
-		else if ((cnt = ft_len_parser(str + i, arg) && (i += cnt))
+		else if ((cnt = ft_len_parser(str + i, arg) && (i += cnt)))
 			continue ;
-		else if ((cnt = ft_num_parser(str + i, arg, lst) && (i += cnt))
-			continue
+		else if ((cnt = ft_num_parser(str + i, arg, lst) && (i += cnt)))
+			continue ;
 		return (0);
 	}
 	if (arg->flag_left)
@@ -104,7 +105,7 @@ int			ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst)
 			break ;
 		i++;	
 	}
-	arg->conversion = str[i];
+	arg->type = str[i];
 	ft_parser(str + 1, arg, i - 1, lst);
 	if (!str[i])
 		i--;
