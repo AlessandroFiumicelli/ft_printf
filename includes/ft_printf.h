@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:17:37 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/04 18:09:18 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/04/09 16:24:37 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_arg
 		ll
 	}		length_mod;
 	char		type;
-	int		size;
+	int			size;
 }				t_arg;
 
 int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst);
@@ -64,7 +64,7 @@ int				ft_print_date(t_arg *arg, va_list *lst);
 // Conversion
 
 // Utilities
-void				ft_putnchar(char c, size_t n);
+void			ft_putnchar(char c, size_t n);
 int				ft_int_dgt_cnt(intmax_t n, int base);
 int				ft_uint_dgt_cnt(uintmax_t n, int base);
 int				ft_get_int_arg(va_list *lst);

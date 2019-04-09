@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/04/09 17:14:51 by alfiumic          #+#    #+#              #
+#    Updated: 2019/04/09 17:56:59 by alfiumic         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 # -*- MakeFile -*-
 
@@ -5,6 +16,19 @@ SRCS = srcs/ft_printf.c\
        srcs/ft_parser.c\
        srcs/ft_utilitys.c\
        srcs/ft_handler.c\
+	   srcs/ft_print_binary.c\
+	   srcs/ft_print_char.c\
+	   srcs/ft_print_date.c\
+	   srcs/ft_print_float.c\
+	   srcs/ft_print_noconv.c\
+	   srcs/ft_print_scientific.c\
+	   srcs/ft_print_signed_decimal.c\
+	   srcs/ft_print_string.c\
+	   srcs/ft_print_unsigned_decimal.c\
+	   srcs/ft_print_unsigned_hexa.c\
+	   srcs/ft_print_unsigned_octal.c\
+	   srcs/ft_print_wchar.c\
+	   srcs/ft_print_wstring.c\
 
 OBJ = $(addprefix obj/,$(notdir $(SRCS:.c=.o)))
 DEP = $(addprefix .d/,$(notdir $(SRCS:.c=.d)))

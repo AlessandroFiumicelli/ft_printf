@@ -1,14 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_float.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 15:57:30 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/04/09 17:48:06 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
-static void     ft_padding(t_arg *arg, va_list *lst)
-{
-        int     a;
-
-        a = 0;
-}
 
 int             ft_print_float(t_arg *arg, va_list *lst)
 {
-        ft_padding(t_arg *arg, va_list *lst);
-        return (1);
+	    free(arg);
+		free(lst);
+		return (1);
 }

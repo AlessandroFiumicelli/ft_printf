@@ -1,94 +1,120 @@
-#include "get_next_line.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/16 14:30:38 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/04/09 16:04:31 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	get_next_line(const int fd, char **line)
+#include "../include/libft.h"
+
+static int				ft_buff_alloc(t_reader *rdr)
 {
-	static char	*str;
-	int		ret;
-	char		*tmp;
-	char		buf[BUFF_SIZE + 1];
-	unsigned int	len;
+	char	*tmp;
 
-	len = 0;
-	if (fd < 0)
-		return (-1);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
-	{
-		buf[ret] = '\0';
-		if (!str)
-			str = ft_strnew(1);
-		tmp = ft_strjoin(str, buf);
-		free(str);
-		str = ft_strdup(tmp);
-		if (ft_strchr(str, '\n'))
-		{
-		//	ft_strchrsr(str, '\n', '\0');
-			break ;
-		}
-	}
-	free(tmp);
-	if (ret < 0)
-	{
-		ft_putstr("Error ret < 0\n");
-		return (-1);
-	}
-	else if (ret == 0 && !str)
-	{
+	if (!(tmp = (char*)malloc(rdr->r_size + BUFF_SIZE)))
 		return (0);
-	}
-	else
-	{
-		while (str && str[len] != '\n')
-			len++;
-		if (str[len])
-		{
-			*line = ft_strsub(str, 0, len);
-			tmp = ft_strdup(&str[len + 1]);
-			free(str);
-			str = tmp;
-		}
-		else
-		{
-			if (ret == BUFF_SIZE)
-				return (get_next_line(fd, line));
-			*line = ft_strdup(str);
-			ft_strdel(&str);
-		}
-		
-		return (1);
-	}
+	ft_memcpy(tmp, rdr->buffer, rdr->r_size);
+	rdr->b_size = rdr->r_size + BUFF_SIZE;
+	ft_memdel((void**)&rdr->buffer);
+	rdr->buffer = tmp;
+	return (1);
 }
 
-int	main(int argc, char **argv)
+static int				ft_reading(const int fd, t_reader *rdr)
 {
-	int	fd;
-	char	*line;
-	int	i;
+	int		cnt;
 
-	i = 0;
-	if (argc != 2)
-	{
-		ft_putstr("Too many or too few argument!");
+	cnt = 0;
+	if ((rdr->b_size - rdr->r_size) < BUFF_SIZE)
+		if (!ft_buff_alloc(rdr))
+			return (-1);
+	cnt = read(fd, rdr->buffer + rdr->r_size, BUFF_SIZE);
+	if (cnt == 0)
+		rdr->stop = 1;
+	else if (cnt < 0)
 		return (-1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	rdr->r_size += cnt;
+	return (1);
+}
+
+static void				ft_reset_buff(t_reader *rdr)
+{
+	int		piecesize;
+	int		fd;
+
+	if (rdr->r_size == 0 && rdr->stop == 1)
 	{
-		ft_putstr("open() error");
-		return (1);
+		fd = rdr->fd;
+		if (rdr->buffer)
+			free(rdr->buffer);
+		ft_memset((void*)rdr, 0, sizeof(t_reader));
+		rdr->fd = fd;
+		return ;
 	}
-	while (i++ < 2)
+	if (!rdr->buffer)
+		return ;
+	if (rdr->el < rdr->buffer || rdr->el > rdr->buffer + rdr->r_size)
 	{
-		if (get_next_line(fd, &line) > 0)
-		{
-			ft_putstr("This is next line: ");
-			ft_putstr(line);
-		}
+		rdr->el = 0;
+		return ;
 	}
-	if (close(fd) == -1)
+	piecesize = (rdr->buffer + rdr->r_size) - (rdr->el);
+	piecesize -= (rdr->stop) ? 0 : 1;
+	ft_memmove(rdr->buffer, rdr->el + 1, piecesize);
+	rdr->r_size = piecesize;
+}
+
+static t_reader			*ft_get_file_manager(int fd, t_list **multilist)
+{
+	t_reader	*tmp;
+	t_list		*cur;
+
+	cur = *multilist;
+	while (cur)
 	{
-		ft_putstr("close() error");
-			return (1);
+		tmp = (t_reader*)cur->content;
+		if (tmp->fd == fd)
+			return (tmp);
+		cur = cur->next;
 	}
-	return (0);
+	if (!(tmp = (t_reader*)ft_memalloc(sizeof(t_reader))))
+		return (0);
+	tmp->fd = fd;
+	if (!(cur = ft_lstnew(tmp, sizeof(t_reader))))
+		return (0);
+	free(tmp);
+	ft_lstadd(multilist, cur);
+	return ((t_reader*)cur->content);
+}
+
+int						get_next_line(const int fd, char **line)
+{
+	static t_list	*multilist;
+	t_reader		*rdr;
+	int				ret;
+
+	if (fd < 0 || !line || !(rdr = ft_get_file_manager(fd, &multilist)))
+		return (-1);
+	ft_reset_buff(rdr);
+	while (!(rdr->el = ft_memchr(rdr->buffer, '\n', rdr->r_size)) && !rdr->stop)
+	{
+		if ((ret = ft_reading(fd, rdr)) != 1)
+			return (ret);
+	}
+	if (rdr->stop)
+	{
+		if (rdr->r_size)
+			rdr->el = rdr->buffer + rdr->r_size;
+		else
+			return (0);
+	}
+	if (!(*line = ft_strnew(rdr->el - rdr->buffer)))
+		return (-1);
+	ft_memcpy(*line, rdr->buffer, rdr->el - rdr->buffer);
+	return (1);
 }

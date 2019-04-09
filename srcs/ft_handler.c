@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_handler.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 15:56:43 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/04/09 18:11:39 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_handler.h"
+#include "../libft/include/libft.h"
 
-extern t_handler	c_table[];
+extern t_handler	c_table[23];
 
 int	ft_printf_handler(t_arg *arg, va_list *lst)
 {
