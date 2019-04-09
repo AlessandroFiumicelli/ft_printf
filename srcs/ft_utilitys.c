@@ -1,5 +1,12 @@
 
 #include "../includes/ft_printf.h"
+#include "../libft/include/libft.h"
+
+void	ft_putnchar(char c, size_t n)
+{
+	while (n--)
+		write(1, &c, 1);
+}
 
 int	ft_int_dgt_cnt(intmax_t n, int base)
 {

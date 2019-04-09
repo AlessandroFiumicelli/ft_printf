@@ -14,9 +14,9 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdint.h>
-# include "../libft/include/libft.h"
 # define FT_PRINTF_TYPE "%cCdiIefgGosSuUxXpbrk"
 # define FT_PRINTF_CONVERSION "#0-+ *.%cCdiIefgGosSuUxXpbrkhlL0123456789"
+# include "../libft/include/libft.h"
 
 int				ft_printf(const char *format, ...);
 
@@ -56,10 +56,15 @@ int				ft_print_unsigned_decimal(t_arg *arg, va_list *lst);
 int				ft_print_unsigned_octal(t_arg *arg, va_list *lst);
 int				ft_print_unsigned_hexa(t_arg *arg, va_list *lst);
 int				ft_print_noconv(t_arg *arg, va_list *lst);
+int				ft_print_float(t_arg *arg, va_list *lst);
+int				ft_print_binary(t_arg *arg, va_list *lst);
+int				ft_print_scientific(t_arg *arg, va_list *lst);
+int				ft_print_date(t_arg *arg, va_list *lst);
 
 // Conversion
 
 // Utilities
+void				ft_putnchar(char c, size_t n);
 int				ft_int_dgt_cnt(intmax_t n, int base);
 int				ft_uint_dgt_cnt(uintmax_t n, int base);
 int				ft_get_int_arg(va_list *lst);

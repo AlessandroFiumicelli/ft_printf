@@ -12,6 +12,7 @@
 
 
 #include "../includes/ft_printf.h"
+#include "../libft/include/libft.h"
 #include <stdio.h>
 
 /*

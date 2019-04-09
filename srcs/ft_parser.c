@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include "../libft/include/libft.h"
 
 static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
 {
