@@ -10,13 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../libft/include/libft.h"
+#include "../includes/ft_printf_internal.h"
+#include <stdint.h>
+#include <stdarg.h>
+#include <unistd.h>
 
-void	ft_putnchar(char c, size_t n)
+void	ft_putnchar(char c, int n, int fd)
 {
 	while (n--)
-		write(1, &c, 1);
+		write(fd, &c, 1);
 }
 
 int	ft_int_dgt_cnt(intmax_t n, int base)

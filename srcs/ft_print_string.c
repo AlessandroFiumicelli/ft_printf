@@ -10,11 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../libft/include/libft.h"
+#include "../includes/ft_printf_internal.h"
+
+static void	ft_padding(const char *out, t_arg *arg, int len)
+{
+	char	fill;
+
+	fill = arg->flag_zero ? '0' : ' ';
+	if (arg->prec_set)
+		len = ft_min(len, arg->precision);
+	if (arg->width > len)
+	{
+		if (arg->flag_left)
+		{
+			wrie(arg->fd, out, len);
+			ft_putnchar(fill, arg->width - len, arg->fd);
+		}
+		else
+		{
+			ft_putnchar(fill, arg->width - len, arg->fd);
+			write(arg->fd, out, len);
+		}
+	}
+	else
+		write(arg->fd, out, len);
+	arg->size = ft_max(len, arg->width);
+}
 
 int		ft_print_string(t_arg *arg, va_list *lst)
 {
-	    free(arg);
-		    free(lst);
-			    return (1);
+	const char	*str;
+	size_t		len;
+
+	if (arg->length_mod == l)
+		return (ft_printf_wstring(arg, lst));
+	str = va_arg(*lst, char*);
+	if (str == NULL)
+		str = "(null)";
+	len = ft_strlen(str);
+	ft_padding(str, arg, len);
+	return (len);
 }

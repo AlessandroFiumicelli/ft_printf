@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
+#include "../includes/ft_printf_internal.h"
 
 static void     ft_padding(t_arg *arg)
 {
@@ -26,17 +26,17 @@ static void     ft_padding(t_arg *arg)
         {
                 if (arg->flag_left)
                 {
-                        ft_putchar(arg->type);
-                        ft_putnchar(fill, arg->width - len);
+                        ft_putchar_fd(arg->type, arg->fd);
+                        ft_putnchar(fill, arg->width - len, arg->fd);
                 }
                 else
                 {
-                        ft_putnchar(fill, arg->width - len);
-                        ft_putchar(arg->type);
+                        ft_putnchar(fill, arg->width - len, arg->fd);
+                        ft_putchar_fd(arg->type, arg->fd);
                 }
         }
         else
-                ft_putchar(arg->type);
+                ft_putchar_fd(arg->type, arg->fd);
         arg->size = ft_max(1, arg->width);
 }
 

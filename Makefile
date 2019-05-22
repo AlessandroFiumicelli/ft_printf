@@ -12,66 +12,89 @@
 
 # -*- MakeFile -*-
 
-SRCS = srcs/ft_printf.c\
-       srcs/ft_parser.c\
-       srcs/ft_utilitys.c\
-       srcs/ft_handler.c\
-	   srcs/ft_print_binary.c\
-	   srcs/ft_print_char.c\
-	   srcs/ft_print_date.c\
-	   srcs/ft_print_float.c\
-	   srcs/ft_print_noconv.c\
-	   srcs/ft_print_scientific.c\
-	   srcs/ft_print_signed_decimal.c\
-	   srcs/ft_print_string.c\
-	   srcs/ft_print_unsigned_decimal.c\
-	   srcs/ft_print_unsigned_hexa.c\
-	   srcs/ft_print_unsigned_octal.c\
-	   srcs/ft_print_wchar.c\
-	   srcs/ft_print_wstring.c\
+SRCDIR = ./srcs/
 
-OBJ = $(addprefix obj/,$(notdir $(SRCS:.c=.o)))
-DEP = $(addprefix .d/,$(notdir $(SRCS:.c=.d)))
+SRCS = ft_printf.c\
+       ft_handler.c\
+       ft_parser.c\
+       ft_print_binary.c\
+       ft_print_char.c\
+       ft_print_date.c\
+       ft_printf_core.c\
+       ft_print_float.c\
+       ft_printf_signedtostr.c\
+       ft_printf_unsignedtostr_base.c\
+       ft_print_noconv.c\
+       ft_print_scientific.c\
+       ft_print_signed_decimal.c\
+       ft_print_string.c\
+       ft_print_unsigned_decimal.c\
+       ft_print_unsigned_hexa.c\
+       ft_print_unsigned_octal.c\
+       ft_print_wchar.c\
+       ft_print_wstring.c\
+       ft_utilitys.c\
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-COMPILE.c = $(CC) $(CFLAGS) -c
-OUTPUT_OPTION = -MMD -MP -MF $(patsubst %.o,.d/%.d,$(notdir $@)) -o $@
+LIBOBJS = ./libft/obj/ft_bzero.o \
+	  ./libft/obj/ft_isascii.o \
+	  ./libft/obj/ft_isdigit.o \
+	  ./libft/obj/ft_itoa.o \
+	  ./libft/obj/ft_max.o \
+	  ./libft/obj/ft_memalloc.o \
+	  ./libft/obj/ft_memset.o \
+	  ./libft/obj/ft_memcpy.o \
+	  ./libft/obj/ft_min.o \
+	  ./libft/obj/ft_putchar.o \
+	  ./libft/obj/ft_putstr.o \
+	  ./libft/obj/ft_putwchar.o \
+	  ./libft/obj/ft_strchr.o \
+	  ./libft/obj/ft_strnew.o \
+	  ./libft/obj/ft_abs.o \
+	  ./libft/obj/ft_atoi.o \
+	  ./libft/obj/ft_strcat.o \
+	  ./libft/obj/ft_strcpy.o \
+	  ./libft/obj/ft_strlen.o \
+	  ./libft/obj/ft_memmove.o \
 
-obj/%.o: srcs/%.c
-	@ mkdir -p obj/
-	@ mkdir -p .d/
-	$(COMPILE.c) $(OUTPUT_OPTION) $< -I./includes
+HEADERS = ./includes/ft_printf.h \
+	  ./includes/ft_printf_internal.h \
+	  ./includes/ft_printf_handler.h
+
 
 NAME = libftprintf.a
+OBJECTS = $(SRCS:.c=.o)
+INCLUDES = -I ./libft/include/ -I ./includes
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -c
+
+
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ /bin/echo -n "Creating library => "
-	@ if ar rc $(NAME) $(OBJ) ; \
-		then /bin/echo ✅ ; \
-		else /bin/echo ❌ ; fi
+$(NAME): $(OBJECTS) ./libft/libft.a 
+	@ echo -n "Creating library: $(NAME) "
+	@ ar rc $(NAME) $(OBJECT) $(LIBOBJS)
 	@ ranlib $(NAME)
-	@ /bin/echo "Finished"
+	@ echo "Finished"
+
+%.o: $(SRCDIR)%.c $(HEADERS)
+	@ echo "compiling $<"
+	@ $(CC) $(CFLAGS) $< $(INCLUDES)
+
+./libft/libft.a:
+	@ make -C ./libft/
 
 clean:
-	@ /bin/echo -n "Deleting Object file => "
-	@ if /bin/rm -rf .d && /bin/rm -rf obj/; \
-		then /bin/echo ✅ ; \
-		else /bin/echo ❌ ; fi
-	@ /bin/echo "Finished"
+	@ make -C ./libft/ clean
+	@ rm -f $(OBJECTS)
+	@ echo "Clean: done"
 
 fclean: clean
-	@ /bin/echo -n "Deleting library => "
-	@ if /bin/rm -rf $(NAME); \
-		then /bin/echo ✅ ; \
-		else /bin/echo ❌ ; fi
-	@ /bin/echo "Finished"
+	@ make -C ./libft/ fclean
+	@ rm -f $(NAME)
+	@ echo "Fclean: done"
 
 re: fclean all
-
--include $(DEP)
-
+	@ echo "Rebuild: done"

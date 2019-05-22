@@ -10,20 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf_handler.h"
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf_internal.h"
+#include "../includes/ft_printf_handler.h"
 
-extern t_handler	c_table[23];
+static t_handler	g_table[] =
+{
+        {'%', &ft_print_char},
+        {'c', &ft_print_char},
+        {'C', &ft_print_wchar},
+        {'d', &ft_print_signed_decimal},
+        {'i', &ft_print_signed_decimal},
+        {'e', &ft_print_scientific},
+        {'E', &ft_print_scientific},
+        {'f', &ft_print_float},
+        {'g', &ft_print_scientific},
+        {'G', &ft_print_scientific},
+        {'o', &ft_print_unsigned_octal},
+        {'O', &ft_print_unsigned_octal},
+        {'s', &ft_print_string},
+        {'S', &ft_print_wstring},
+        {'u', &ft_print_unsigned_decimal},
+        {'U', &ft_print_unsigned_decimal},
+        {'x', &ft_print_unsigned_hexa},
+        {'X', &ft_print_unsigned_hexa},
+        {'p', &ft_print_unsigned_hexa},
+        {'b', &ft_print_binary},
+        {'r', &ft_print_unsigned_hexa},
+        {'k', &ft_print_date},
+        {0, 0}
+};
 
 int	ft_printf_handler(t_arg *arg, va_list *lst)
 {
 	int			i;
 
 	i = 0;
-	while (c_table[i].conv != 0)
+	while (g_table[i].conv != 0)
 	{
-		if (c_table[i].conv == arg->type)
-			return (c_table[i].f(arg, lst));
+		if (g_table[i].conv == arg->type)
+			return (g_table[i].f(arg, lst));
 		i++;
 	}
 	if (arg->type)

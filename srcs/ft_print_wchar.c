@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-
+#include "../libft/include/libft.h"
+#include "../includes/ft_printf_internal.h"
 
 static void	ft_padding(wchar_t out, t_arg *arg, int len)
 {
@@ -24,17 +24,17 @@ static void	ft_padding(wchar_t out, t_arg *arg, int len)
 	{
 		if (arg->flag_left)
 		{
-			ft_putwchar(out);
-			ft_putnchar(fill, arg->width - len);
+			ft_putwchar_fd(out, arg->fd);
+			ft_putnchar(fill, arg->width - len, arg->fd);
 		}
 		else
 		{
-			ft_putnchar(fill, arg->width - len);
-			ft_putwchar(out);
+			ft_putnchar(fill, arg->width - len, arg->fd);
+			ft_putwchar_fd(out, arg->fd);
 		}
 	}
 	else
-		ft_putchar(out);
+		ft_putwchar_fd(out, arg->fd);
 	arg->size = ft_max(len, arg->width);
 }
 
@@ -45,6 +45,17 @@ int		ft_print_wchar(t_arg *arg, va_list *lst)
 
 	len = 0;
 	c = va_arg(*lst, wchar_t);
+	ft_padding(c, arg, len);
+	if (c < 0x80)
+		len = 1;
+	else if (c < 0x800)
+		len = 2;
+	else if (c < 0x10000)
+		len = 3;
+	else if (c <= 0x10ffff)
+		len = 4;
+	else
+		len = 0;
 	ft_padding(c, arg, len);
 	return (len);
 }
