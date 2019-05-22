@@ -18,7 +18,7 @@ static uintmax_t	catch_int(t_arg *arg, va_list *lst)
 	uintmax_t	var;
 
 	var = va_arg(*lst, uintmax_t);
-	if (arg->conversion == 'p' && (arg->flag_alt = 1))
+	if (arg->type == 'p' && (arg->flag_alt = 1))
 		return ((uintmax_t)(uintptr_t)var);
 	else if (arg->length_mod == hh)
 		return ((unsigned char)var);
@@ -39,9 +39,9 @@ static char			*getprefix(t_arg *arg)
 {
 	if (arg->flag_alt)
 	{
-		if (arg->conversion == 'x' || arg->conversion == 'p')
+		if (arg->type == 'x' || arg->type == 'p')
 			return ("0x");
-		else if (arg->conversion == 'X')
+		else if (arg->type == 'X')
 			return ("0X");
 	}
 	return ("");
@@ -52,9 +52,9 @@ static void			ft_padding(char *out, int len, t_arg *arg, uintmax_t num)
 	int	offset;
 
 	offset = ft_strlen(getprefix(arg));
-	if (!num && arg->conversion != 'p')
+	if (!num && arg->type != 'p')
 		offset = 0;
-	if ((arg->flag_alt && len) || arg->conversion == 'p')
+	if ((arg->flag_alt && len) || arg->type == 'p')
 	{
 		ft_memcpy(out + (arg->size - len - offset), getprefix(arg), offset);
 		len += offset;
@@ -78,9 +78,9 @@ static void			ft_padding(char *out, int len, t_arg *arg, uintmax_t num)
 
 static char			*getb(t_arg *arg)
 {
-	if (arg->conversion == 'x' || arg->conversion == 'p')
+	if (arg->type == 'x' || arg->type == 'p')
 		return ("0123456789abcdef");
-	else if (arg->conversion == 'X')
+	else if (arg->type == 'X')
 		return ("0123456789ABCDEF");
 	else
 		return (0);
@@ -98,8 +98,8 @@ int					ft_printf_unsigned_hex(t_arg *arg, va_list *lst)
 	len = ft_max(ft_uint_dgt_cnt(num, 16), arg->precision);
 	if (num == 0 && arg->prec_set && arg->precision == 0)
 		len--;
-	arg->size = ft_max(arg->field_width, len + \
-	((num || arg->conversion == 'p') ? ft_strlen(getprefix(arg)) : 0));
+	arg->size = ft_max(arg->width, len + \
+	((num || arg->type == 'p') ? ft_strlen(getprefix(arg)) : 0));
 	if (!(out = ft_strnew(arg->size)))
 		return (0);
 	ft_printf_unsignedtostr_base(out + (arg->size - len), num, arg, getb(arg));

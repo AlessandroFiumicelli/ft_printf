@@ -54,7 +54,7 @@ static void		ft_padding(const wchar_t *out, t_arg *arg, int len)
 	if (arg->prec_set)
 		len = ft_min(len, arg->precision);
 	wch = getwlen(out, &len);
-	if (arg->field_width > len)
+	if (arg->width > len)
 	{
 		if (arg->flag_left)
 		{
@@ -69,7 +69,7 @@ static void		ft_padding(const wchar_t *out, t_arg *arg, int len)
 	}
 	else
 		putnwstr(out, wch, arg->fd);
-	arg->size = ft_max(len, arg->field_width);
+	arg->size = ft_max(len, arg->width);
 }
 
 int				ft_printf_wstring(t_arg *arg, va_list *lst)

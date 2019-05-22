@@ -18,8 +18,8 @@ static intmax_t catch_int(t_arg *arg, va_list *lst)
 	intmax_t	var;
 
 	var = va_arg(*lst, intmax_t);
-	if (arg->conversion == 'D')
-		arg->length_mod == l;
+	if (arg->type == 'D')
+		arg->length_mod = l;
 	if (arg->length_mod == hh)
 		return ((char)var);
 	else if (arg->length_mod == h)
@@ -57,7 +57,6 @@ static void	ft_padding(char *out, int len, t_arg *arg)
 	}
 	else
 		ft_memset(out, ' ', arg->size - len);
-	}
 }
 
 int             ft_print_signed_decimal(t_arg *arg, va_list *lst)
@@ -71,7 +70,7 @@ int             ft_print_signed_decimal(t_arg *arg, va_list *lst)
 	      + ((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
 	if (num == 0 && arg->prec_set && arg->precision == 0)
 		len--;
-	arg->size = ft_max(arg->fild_width, len);
+	arg->size = ft_max(arg->width, len);
 	if (!(out = ft_strnew(arg->size)))
 		return (0);
 	if  (arg->flag_left || arg->prec_set)

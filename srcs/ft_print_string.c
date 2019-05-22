@@ -24,7 +24,7 @@ static void	ft_padding(const char *out, t_arg *arg, int len)
 	{
 		if (arg->flag_left)
 		{
-			wrie(arg->fd, out, len);
+			write(arg->fd, out, len);
 			ft_putnchar(fill, arg->width - len, arg->fd);
 		}
 		else
@@ -44,7 +44,7 @@ int		ft_print_string(t_arg *arg, va_list *lst)
 	size_t		len;
 
 	if (arg->length_mod == l)
-		return (ft_printf_wstring(arg, lst));
+		return (ft_print_wstring(arg, lst));
 	str = va_arg(*lst, char*);
 	if (str == NULL)
 		str = "(null)";
