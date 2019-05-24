@@ -13,7 +13,7 @@
 #include "../libft/include/libft.h"
 #include "../includes/ft_printf_internal.h"
 
-int             ft_print_scientific(t_arg *arg, va_list *lst)
+int             ft_printf_scientific(t_arg *arg, va_list *lst)
 {
             free(arg);
 			    free(lst);

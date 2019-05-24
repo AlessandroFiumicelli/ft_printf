@@ -46,19 +46,20 @@ int				ft_printf_handler(t_arg *arg, va_list *lst);
 
 // Handlers
 
-int				ft_print_signed_decimal(t_arg *arg, va_list *lst);
-int				ft_print_unsigned_decimal(t_arg *arg, va_list *lst);
-int				ft_print_unsigned_octal(t_arg *arg, va_list *lst);
-int				ft_print_unsigned_hexa(t_arg *arg, va_list *lst);
-int				ft_print_string(t_arg *arg, va_list *lst);
-int				ft_print_wstring(t_arg *arg, va_list *lst);
-int				ft_print_char(t_arg *arg, va_list *lst);
-int				ft_print_wchar(t_arg *arg, va_list *lst);
-int				ft_print_noconv(t_arg *arg, va_list *lst);
-int				ft_print_float(t_arg *arg, va_list *lst);
-int				ft_print_binary(t_arg *arg, va_list *lst);
-int				ft_print_scientific(t_arg *arg, va_list *lst);
-int				ft_print_date(t_arg *arg, va_list *lst);
+int				ft_printf_signed_decimal(t_arg *arg, va_list *lst);
+int				ft_printf_unsigned_decimal(t_arg *arg, va_list *lst);
+int				ft_printf_unsigned_octal(t_arg *arg, va_list *lst);
+int				ft_printf_unsigned_hexa(t_arg *arg, va_list *lst);
+int				ft_printf_decimal(t_arg *arg, va_list *lst);
+int				ft_printf_string(t_arg *arg, va_list *lst);
+int				ft_printf_wstring(t_arg *arg, va_list *lst);
+int				ft_printf_char(t_arg *arg, va_list *lst);
+int				ft_printf_wchar(t_arg *arg, va_list *lst);
+int				ft_printf_noconv(t_arg *arg, va_list *lst);
+int				ft_printf_float(t_arg *arg, va_list *lst);
+int				ft_printf_binary(t_arg *arg, va_list *lst);
+int				ft_printf_scientific(t_arg *arg, va_list *lst);
+int				ft_printf_date(t_arg *arg, va_list *lst);
 
 // Conversion
 void			ft_printf_signedtostr(char *out, intmax_t num, t_arg *arg);

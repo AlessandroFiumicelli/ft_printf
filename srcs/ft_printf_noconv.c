@@ -16,7 +16,7 @@
 static void     ft_padding(t_arg *arg)
 {
         char    fill;
-        int     len;    
+        int     len;
 
         fill = arg->flag_zero ? '0' : ' ';
         len = 1;
@@ -40,7 +40,7 @@ static void     ft_padding(t_arg *arg)
         arg->size = ft_max(1, arg->width);
 }
 
-int             ft_print_noconv(t_arg *arg, va_list *lst)
+int             ft_printf_noconv(t_arg *arg, va_list *lst)
 {
         (void)lst;
         ft_padding(arg);

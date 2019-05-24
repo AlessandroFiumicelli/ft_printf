@@ -16,28 +16,28 @@
 
 static t_handler	g_table[] =
 {
-        {'%', &ft_print_char},
-        {'c', &ft_print_char},
-        {'C', &ft_print_wchar},
-        {'d', &ft_print_signed_decimal},
-        {'i', &ft_print_signed_decimal},
-        {'e', &ft_print_scientific},
-        {'E', &ft_print_scientific},
-        {'f', &ft_print_float},
-        {'g', &ft_print_scientific},
-        {'G', &ft_print_scientific},
-        {'o', &ft_print_unsigned_octal},
-        {'O', &ft_print_unsigned_octal},
-        {'s', &ft_print_string},
-        {'S', &ft_print_wstring},
-        {'u', &ft_print_unsigned_decimal},
-        {'U', &ft_print_unsigned_decimal},
-        {'x', &ft_print_unsigned_hexa},
-        {'X', &ft_print_unsigned_hexa},
-        {'p', &ft_print_unsigned_hexa},
-        {'b', &ft_print_binary},
-        {'r', &ft_print_unsigned_hexa},
-        {'k', &ft_print_date},
+        {'%', &ft_printf_char},
+        {'c', &ft_printf_char},
+        {'C', &ft_printf_wchar},
+        {'d', &ft_printf_signed_decimal},
+        {'i', &ft_printf_signed_decimal},
+        {'e', &ft_printf_scientific},
+        {'E', &ft_printf_scientific},
+       	{'f', &ft_printf_decimal},
+        {'g', &ft_printf_scientific},
+        {'G', &ft_printf_scientific},
+        {'o', &ft_printf_unsigned_octal},
+        {'O', &ft_printf_unsigned_octal},
+        {'s', &ft_printf_string},
+        {'S', &ft_printf_wstring},
+        {'u', &ft_printf_unsigned_decimal},
+        {'U', &ft_printf_unsigned_decimal},
+        {'x', &ft_printf_unsigned_hexa},
+        {'X', &ft_printf_unsigned_hexa},
+        {'p', &ft_printf_unsigned_hexa},
+        {'b', &ft_printf_binary},
+        {'r', &ft_printf_unsigned_hexa},
+        {'k', &ft_printf_date},
         {0, 0}
 };
 
@@ -53,6 +53,6 @@ int	ft_printf_handler(t_arg *arg, va_list *lst)
 		i++;
 	}
 	if (arg->type)
-		ft_print_noconv(arg, lst);
+		ft_printf_noconv(arg, lst);
 	return (0);
 }

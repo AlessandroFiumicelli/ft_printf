@@ -1,7 +1,7 @@
 #include "../libft/include/libft.h"
 #include "../includes/ft_printf_internal.h"
 
-static int      ft_print_arg(char **str, va_list *lst, int fd)
+static int      ft_printf_arg(char **str, va_list *lst, int fd)
 {
         t_arg   arg;
         int     len;
@@ -24,7 +24,7 @@ int	ft_printf_core(int fd, const char *format, va_list *lst)
 	while (*cursor)
 	{
 		if (*cursor == '%')
-			out += ft_print_arg(&cursor, lst, fd);
+			out += ft_printf_arg(&cursor, lst, fd);
 		else
 		{
 			ft_putchar_fd(*cursor++, fd);
@@ -33,4 +33,3 @@ int	ft_printf_core(int fd, const char *format, va_list *lst)
 	}
 	return (out);
 }
-

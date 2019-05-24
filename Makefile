@@ -17,22 +17,22 @@ SRCDIR = ./srcs/
 SRCS = ft_printf.c\
        ft_handler.c\
        ft_parser.c\
-       ft_print_binary.c\
-       ft_print_char.c\
-       ft_print_date.c\
+       ft_printf_binary.c\
+       ft_printf_char.c\
+       ft_printf_date.c\
        ft_printf_core.c\
-       ft_print_float.c\
+       ft_printf_decimal.c\
        ft_printf_signedtostr.c\
        ft_printf_unsignedtostr_base.c\
-       ft_print_noconv.c\
-       ft_print_scientific.c\
-       ft_print_signed_decimal.c\
-       ft_print_string.c\
-       ft_print_unsigned_decimal.c\
-       ft_print_unsigned_hexa.c\
-       ft_print_unsigned_octal.c\
-       ft_print_wchar.c\
-       ft_print_wstring.c\
+       ft_printf_noconv.c\
+       ft_printf_scientific.c\
+       ft_printf_signed_decimal.c\
+       ft_printf_string.c\
+       ft_printf_unsigned_decimal.c\
+       ft_printf_unsigned_hexa.c\
+       ft_printf_unsigned_octal.c\
+       ft_printf_wchar.c\
+       ft_printf_wstring.c\
        ft_utilitys.c\
 
 LIBOBJS = ./libft/obj/ft_bzero.o \

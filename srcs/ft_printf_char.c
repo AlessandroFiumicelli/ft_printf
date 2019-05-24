@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_wchar.c                                   :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 15:59:11 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:59:27 by alfiumic         ###   ########.fr       */
+/*   Created: 2019/04/09 15:57:10 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/04/09 17:46:22 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
 #include "../includes/ft_printf_internal.h"
 
-static void	ft_padding(wchar_t out, t_arg *arg, int len)
+static void	ft_padding(char c, t_arg *arg, int len)
 {
 	char	fill;
 
@@ -24,38 +24,36 @@ static void	ft_padding(wchar_t out, t_arg *arg, int len)
 	{
 		if (arg->flag_left)
 		{
-			ft_putwchar_fd(out, arg->fd);
+			ft_putchar_fd(c, arg->fd);
 			ft_putnchar(fill, arg->width - len, arg->fd);
 		}
 		else
 		{
 			ft_putnchar(fill, arg->width - len, arg->fd);
-			ft_putwchar_fd(out, arg->fd);
+			ft_putchar_fd(c, arg->fd);
 		}
 	}
 	else
-		ft_putwchar_fd(out, arg->fd);
+		ft_putchar_fd(c, arg->fd);
 	arg->size = ft_max(len, arg->width);
 }
 
-int		ft_print_wchar(t_arg *arg, va_list *lst)
-{
-	wchar_t		c;
-	size_t		len;
 
-	len = 0;
-	c = va_arg(*lst, wchar_t);
-	ft_padding(c, arg, len);
-	if (c < 0x80)
-		len = 1;
-	else if (c < 0x800)
-		len = 2;
-	else if (c < 0x10000)
-		len = 3;
-	else if (c <= 0x10ffff)
-		len = 4;
+int	ft_printf_char(t_arg *arg, va_list *lst)
+{
+	char	c;
+	size_t	len;
+
+	if (arg->type == '%')
+		c = '%';
 	else
-		len = 0;
+	{
+		if (arg->length_mod == l)
+			return (ft_printf_wchar(arg, lst));
+		else
+			c = (char)va_arg(*lst, int);
+	}
+	len = 1;
 	ft_padding(c, arg, len);
 	return (len);
 }
