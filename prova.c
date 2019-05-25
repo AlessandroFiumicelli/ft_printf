@@ -1,11 +1,8 @@
-#include "includes/ft_printf.h"
-#include "includes/ft_printf_handler.h"
-#include "includes/ft_printf_internal.h"
+
 #include <stdio.h>
 
 int	main()
 {
-	printf("%-8c\n", 'a');
-	ft_printf("%-8c\n", 'a');
+	printf("%8.2f\n", 3.14);
 	return (0);
 }

@@ -64,11 +64,12 @@ int				ft_printf_date(t_arg *arg, va_list *lst);
 // Conversion
 void			ft_printf_signedtostr(char *out, intmax_t num, t_arg *arg);
 void			ft_printf_unsignedtostr_base(char *out, uintmax_t num, t_arg *arg, char *base);
-
+void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg);
 // Utilities
 void			ft_putnchar(char c, int n, int fd);
 int				ft_int_dgt_cnt(intmax_t n, int base);
 int				ft_uint_dgt_cnt(uintmax_t n, int base);
+int				ft_dec_dgt_cnt(long double, t_arg *arg);
 int				ft_get_int_arg(va_list *lst);
 
 #endif

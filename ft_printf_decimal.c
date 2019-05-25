@@ -54,11 +54,13 @@ static void	ft_padding(char *out, int len, t_arg *arg)
 int             ft_print_decimal(t_arg *arg, va_list *lst)
 {
 	long double	num;
+	intmax_t	inte;
 	char		*out;
 	int		len;
 
 	num = catch_dec(arg, lst);
-	len = ft_max(ft_dec_dgt_cnt(num, arg), arg->precision) \
+	inte = (intmax_t)num;
+	len = ft_max(ft_int_dgt_cnt(inte, 10), arg->precision) \
 	      + ((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
 	if (num == 0 && arg->prec_set && arg->precision == 0)
 		len--;
@@ -67,7 +69,7 @@ int             ft_print_decimal(t_arg *arg, va_list *lst)
 		return (0);
 	if  (arg->flag_left || arg->prec_set)
 		arg->flag_zero = 0;
-	ft_printf_decimaltostr(out + (arg->size - len), num, arg);
+	ft_printf_signedtostr(out + (arg->size - len), num, arg);
 	ft_padding(out, len, arg);
 	ft_putstr_fd(out, arg->fd);
 	len = ft_strlen(out);

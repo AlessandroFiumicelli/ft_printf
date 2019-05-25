@@ -24,6 +24,7 @@ SRCS = ft_printf.c\
        ft_printf_decimal.c\
        ft_printf_signedtostr.c\
        ft_printf_unsignedtostr_base.c\
+       ft_printf_decimaltostr.c\
        ft_printf_noconv.c\
        ft_printf_scientific.c\
        ft_printf_signed_decimal.c\
@@ -55,6 +56,7 @@ LIBOBJS = ./libft/obj/ft_bzero.o \
 	  ./libft/obj/ft_strcpy.o \
 	  ./libft/obj/ft_strlen.o \
 	  ./libft/obj/ft_memmove.o \
+	  ./libft/obj/ft_strjoin.o \
 
 HEADERS = ./includes/ft_printf.h \
 	  ./includes/ft_printf_internal.h \

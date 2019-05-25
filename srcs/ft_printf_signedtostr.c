@@ -1,6 +1,6 @@
 #include <stdint.h>
-#include "libft.h"
 #include "../includes/ft_printf_internal.h"
+#include "../libft/include/libft.h"
 
 static int	getlen(int len, intmax_t num, t_arg *arg)
 {

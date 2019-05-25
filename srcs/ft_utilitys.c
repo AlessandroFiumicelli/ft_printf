@@ -51,6 +51,27 @@ int	ft_uint_dgt_cnt(uintmax_t n, int base)
 	return (ret);
 }
 
+int	ft_dec_dgt_cnt(long double num, t_arg *arg)
+{
+	intmax_t        size;
+        intmax_t        n_left;
+        intmax_t        n_right;
+        long double     n;
+
+        size = 0;
+        n_left = (intmax_t)num;
+        n = num - n_left;
+        while (size < arg->precision)
+        {
+                n = n * 10;
+                size++;
+        }
+        n_right = (intmax_t)n;
+        size = ft_int_dgt_cnt(n_left, 10) + 1 + ft_int_dgt_cnt(n_right, 10);
+        return (size);
+
+}
+
 int	ft_get_int_arg(va_list *lst)
 {
 	int	ret;
