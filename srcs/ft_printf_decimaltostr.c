@@ -67,7 +67,7 @@ static void	ft_string_builder(char *out, long double n, t_arg *arg)
 	right_field = ft_right_field(intmax_t n_right);
 	left_field = ft_left_field(intmax_t n_left);
 	tmp = ft_strjoin(left_field, right_field);
-	out = tmp;
+	out = strcpy(out, tmp);
 	free(tmp);
 	free(right_field);
 	free(left_field);
