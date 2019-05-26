@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 static char     *ft_right_field(intmax_t n)

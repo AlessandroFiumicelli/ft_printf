@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf_internal.h"
+#include "../includes/ft_printf.h"
 #include <stdint.h>
 #include <stdarg.h>
 #include <unistd.h>

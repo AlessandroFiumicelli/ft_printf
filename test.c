@@ -3,6 +3,7 @@
 
 int	main()
 {
-	printf("%8.2f\n", 3.14);
+	ft_printf("%8.2d\n", 3);
+	printf("%8.2d\n", 3);
 	return (0);
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 int             ft_printf_date(t_arg *arg, va_list *lst)

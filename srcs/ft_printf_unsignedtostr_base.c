@@ -1,6 +1,7 @@
 
 #include <stdint.h>
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 void	ft_printf_unsignedtostr_base(char *out, uintmax_t n, t_arg *arg, char *base)

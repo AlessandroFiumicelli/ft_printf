@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 static void	ft_padding(char c, t_arg *arg, int len)

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 static void		putnwstr(const wchar_t *str, size_t size, int fd)

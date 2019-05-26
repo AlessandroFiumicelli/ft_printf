@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_internal.h"
 
 static long double catch_dec(t_arg *arg, va_list *lst)
@@ -74,4 +75,3 @@ int             ft_print_decimal(t_arg *arg, va_list *lst)
 	free(out);
 	return (len);
 }
-

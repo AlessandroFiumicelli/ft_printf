@@ -1,5 +1,6 @@
 #include "../libft/include/libft.h"
 #include "../includes/ft_printf_internal.h"
+#include "../includes/ft_printf.h"
 
 static int      ft_printf_arg(char **str, va_list *lst, int fd)
 {
