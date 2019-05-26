@@ -12,6 +12,7 @@
 
 #ifndef FT_PRINTF_INTERNAL_H
 # define FT_PRINTF_INTERNAL_H
+# include "ft_printf.h"
 # include <stdarg.h>
 # include <stdint.h>
 
