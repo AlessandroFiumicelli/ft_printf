@@ -6,7 +6,7 @@
 #    By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/09 17:14:51 by alfiumic          #+#    #+#              #
-#    Updated: 2019/04/09 17:56:59 by alfiumic         ###   ########.fr        #
+#    Updated: 2019/05/27 17:26:24 by alfiumic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,27 +14,27 @@
 
 SRCDIR = ./srcs/
 
-SRCS = ft_printf.c\
-       ft_handler.c\
-       ft_parser.c\
-       ft_printf_binary.c\
-       ft_printf_char.c\
-       ft_printf_date.c\
-       ft_printf_core.c\
-       ft_printf_decimal.c\
-       ft_printf_signedtostr.c\
-       ft_printf_unsignedtostr_base.c\
-       ft_printf_decimaltostr.c\
-       ft_printf_noconv.c\
-       ft_printf_scientific.c\
-       ft_printf_signed_decimal.c\
-       ft_printf_string.c\
-       ft_printf_unsigned_decimal.c\
-       ft_printf_unsigned_hexa.c\
-       ft_printf_unsigned_octal.c\
-       ft_printf_wchar.c\
-       ft_printf_wstring.c\
-       ft_utilitys.c\
+SRCS = ft_printf.c \
+       ft_handler.c \
+       ft_parser.c \
+       ft_printf_binary.c \
+       ft_printf_char.c \
+       ft_printf_date.c \
+       ft_printf_core.c \
+       ft_printf_decimal.c \
+       ft_printf_signedtostr.c \
+       ft_printf_unsignedtostr_base.c \
+       ft_printf_decimaltostr.c \
+       ft_printf_noconv.c \
+       ft_printf_scientific.c \
+       ft_printf_signed_decimal.c \
+       ft_printf_string.c \
+       ft_printf_unsigned_decimal.c \
+       ft_printf_unsigned_hexa.c \
+       ft_printf_unsigned_octal.c \
+       ft_printf_wchar.c \
+       ft_printf_wstring.c \
+       ft_utilitys.c
 
 LIBOBJS = ./libft/obj/ft_bzero.o \
 	  ./libft/obj/ft_isascii.o \
@@ -57,6 +57,12 @@ LIBOBJS = ./libft/obj/ft_bzero.o \
 	  ./libft/obj/ft_strlen.o \
 	  ./libft/obj/ft_memmove.o \
 	  ./libft/obj/ft_strjoin.o \
+	  ./libft/obj/ft_putchar_fd.o \
+	  ./libft/obj/ft_custom_strcat.o \
+	  ./libft/obj/ft_custom_strcpy.o \
+	  ./libft/obj/ft_custom_strlen.o \
+	  ./libft/obj/ft_putwchar_fd.o \
+	  ./libft/obj/ft_putstr_fd.o 
 
 HEADERS = ./includes/ft_printf.h \
 	  ./includes/ft_printf_internal.h \
@@ -69,15 +75,13 @@ INCLUDES = -I ./libft/include/ -I ./includes
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -c
 
-
-
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: comp_libft $(NAME)
 
-$(NAME): $(OBJECTS) ./libft/libft.a 
+$(NAME): ./libft/libft.a $(OBJECTS) 
 	@ echo -n "Creating library: $(NAME) "
-	@ ar rc $(NAME) $(OBJECT) $(LIBOBJS)
+	@ ar rc $(NAME) $(OBJECTS) $(LIBOBJS)
 	@ ranlib $(NAME)
 	@ echo "Finished"
 
@@ -85,7 +89,7 @@ $(NAME): $(OBJECTS) ./libft/libft.a
 	@ echo "compiling $<"
 	@ $(CC) $(CFLAGS) $< $(INCLUDES)
 
-./libft/libft.a:
+comp_libft:
 	@ make -C ./libft/
 
 clean:

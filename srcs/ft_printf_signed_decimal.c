@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:58:05 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:51:19 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:13:23 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	ft_padding(char *out, int len, t_arg *arg)
 		ft_memset(out, ' ', arg->size - len);
 }
 
-int             ft_print_signed_decimal(t_arg *arg, va_list *lst)
+int             ft_printf_signed_decimal(t_arg *arg, va_list *lst)
 {
 	intmax_t	num;
 	char		*out;

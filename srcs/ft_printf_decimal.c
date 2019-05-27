@@ -6,13 +6,13 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:57:30 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:48:06 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:24:05 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 static long double catch_dec(t_arg *arg, va_list *lst)
 {
@@ -52,7 +52,7 @@ static void	ft_padding(char *out, int len, t_arg *arg)
 		ft_memset(out, ' ', arg->size - len);
 }
 
-int             ft_print_decimal(t_arg *arg, va_list *lst)
+int             ft_printf_decimal(t_arg *arg, va_list *lst)
 {
 	long double	num;
 	char		*out;

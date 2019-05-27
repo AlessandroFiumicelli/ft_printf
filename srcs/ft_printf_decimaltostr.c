@@ -97,7 +97,7 @@ static int      putmodifiers(char *str, long double n, t_arg *arg)
         }
         return (1);
 }
-void            ft_printf_decimaltostring(char *out, long double n, t_arg *arg)
+void            ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
 {
         int     size;
         int     len;

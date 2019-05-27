@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:58:46 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:52:50 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:14:45 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char			*getb(t_arg *arg)
 		return (0);
 }
 
-int					ft_printf_unsigned_hex(t_arg *arg, va_list *lst)
+int					ft_printf_unsigned_hexa(t_arg *arg, va_list *lst)
 {
 	uintmax_t	num;
 	char		*out;
