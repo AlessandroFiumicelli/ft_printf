@@ -62,7 +62,9 @@ LIBOBJS = ./libft/obj/ft_bzero.o \
 	  ./libft/obj/ft_custom_strcpy.o \
 	  ./libft/obj/ft_custom_strlen.o \
 	  ./libft/obj/ft_putwchar_fd.o \
-	  ./libft/obj/ft_putstr_fd.o 
+	  ./libft/obj/ft_putstr_fd.o \
+	  ./libft/obj/ft_putendl_fd.o \
+	  ./libft/obj/ft_putendl.o \
 
 HEADERS = ./includes/ft_printf.h \
 	  ./includes/ft_printf_internal.h \

@@ -49,7 +49,8 @@ static char	g_table[127] =
 	['x'] = 2,
 	['X'] = 2,
 	['c'] = 2,
-	['C'] = 2
+	['C'] = 2,
+	['f'] = 2
 };
 
 static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
