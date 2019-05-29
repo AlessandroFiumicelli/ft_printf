@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 16:10:06 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 16:31:19 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:25:40 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			ft_printf_string_builder(char *out, long double n, t_arg *arg)
 	right_field = ft_right_field(n_right);
 	left_field = ft_left_field(n_left);
 	tmp = ft_strjoin(left_field, right_field);
-	out = strcpy(out, tmp);
+	out = ft_strcpy(out, tmp);
 	free(tmp);
 	free(right_field);
 	free(left_field);

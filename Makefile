@@ -6,7 +6,7 @@
 #    By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/09 17:14:51 by alfiumic          #+#    #+#              #
-#    Updated: 2019/05/29 16:19:00 by alfiumic         ###   ########.fr        #
+#    Updated: 2019/05/29 17:27:44 by alfiumic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ CFLAGS = -Wall -Werror -Wextra -c
 
 all: comp_libft $(NAME)
 
-$(NAME): ./libft/libft.a $(OBJECTS) 
+$(NAME): $(OBJECTS) 
 	@ echo -n "Creating library: $(NAME) "
 	@ ar rc $(NAME) $(OBJECTS) $(LIBOBJS)
 	@ ranlib $(NAME)
