@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:16:54 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 15:35:50 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:39:31 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	lst;
-	int		out;
+	int		ret;
 
 	va_start(lst, format);
-	out = ft_printf_core(1, format, &lst);
+	ret = ft_printf_core(1, format, &lst);
 	va_end(lst);
-	return (out);
+	return (ret);
 }

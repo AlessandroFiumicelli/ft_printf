@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:16:31 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 15:33:59 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:53:52 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ static int		ft_num_parser(char *str, t_arg *arg, va_list *lst)
 	if (*str == '.')
 	{
 		arg->prec_set = 1;
-		arg->precision = (str[1] == '*') ? \
-						ft_get_int_arg(lst) : ft_atoi(str + 1);
-		arg->precision = (arg->precision < 0) ? \
-						0 : arg->precision;
+		arg->precision = ((str[1] == '*') ? \
+						ft_get_int_arg(lst) : ft_atoi(str + 1));
+		arg->precision = (arg->precision < 0) ? 0 : arg->precision;
 		if (str[1] == '*')
 			return (2);
 		else
@@ -71,7 +70,7 @@ static int		ft_num_parser(char *str, t_arg *arg, va_list *lst)
 	}
 	else if (ft_isdigit(*str) || *str == '*')
 	{
-		arg->width = (*str == '*') ? ft_get_int_arg(lst) : ft_atoi(str);
+		arg->width = ((*str == '*') ? ft_get_int_arg(lst) : ft_atoi(str));
 		if (arg->width < 0 && (arg->width = ft_abs(arg->width)))
 			arg->flag_left = 1;
 		return ((*str != '*') ? ft_int_dgt_cnt(arg->width, 10) : 1);
@@ -127,11 +126,11 @@ static int		ft_parser(char *str, t_arg *arg, int len, va_list *lst)
 	i = 0;
 	while (i < len)
 	{
-		if ((cnt = ft_flag_parser(str + i, arg) && (i += cnt)))
+		if ((cnt = ft_flag_parser(str + i, arg)) && (i += cnt))
 			continue ;
-		else if ((cnt = ft_len_parser(str + i, arg) && (i += cnt)))
+		else if ((cnt = ft_len_parser(str + i, arg)) && (i += cnt))
 			continue ;
-		else if ((cnt = ft_num_parser(str + i, arg, lst) && (i += cnt)))
+		else if ((cnt = ft_num_parser(str + i, arg, lst)) && (i += cnt))
 			continue ;
 		return (0);
 	}
@@ -147,7 +146,7 @@ int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst)
 
 	i = 1;
 	isconv = 1;
-	while (str[i] && g_table[(unsigned char)str[i] != 2])
+	while (str[i] && g_table[(unsigned char)str[i]] != 2)
 	{
 		if (g_table[(unsigned char)str[i]] == 0 && !(isconv = 0))
 			break ;
