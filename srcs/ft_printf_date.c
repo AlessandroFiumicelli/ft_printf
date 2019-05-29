@@ -6,15 +6,15 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:57:22 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:47:46 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:00:40 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
-int             ft_printf_date(t_arg *arg, va_list *lst)
+int		ft_printf_date(t_arg *arg, va_list *lst)
 {
 	free(arg);
 	free(lst);

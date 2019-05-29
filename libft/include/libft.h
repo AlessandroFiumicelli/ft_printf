@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 17:04:06 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:38:44 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:18:30 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				get_next_line(const int fd, char **line);
-
-// My extra functions
+/*
+** My extra functions
+*/
 size_t			ft_lstlen(t_list *alst);
 void			ft_print_words_tables(char **tab);
 void			ft_print_words_tables_fd(char **tab, int fd);
@@ -116,5 +117,6 @@ int				ft_abs(int nb);
 void			ft_putwchar(wchar_t c);
 void			ft_putwchar_fd(wchar_t c, int fd);
 void			ft_putwstr(wchar_t *str);
+void			ft_putwstr_fd(wchar_t *str, int fd);
 
 #endif

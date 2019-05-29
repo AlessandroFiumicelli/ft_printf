@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_binary.c                                  :+:      :+:    :+:   */
+/*   ft_putwstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 15:56:58 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 17:00:02 by alfiumic         ###   ########.fr       */
+/*   Created: 2019/05/29 17:14:38 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/05/29 17:16:38 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf_internal.h"
-#include "ft_printf.h"
+#include "../include/libft.h"
 
-int		ft_printf_binary(t_arg *arg, va_list *lst)
+void	ft_putwstr_fd(wchar_t *str, int fd)
 {
-	free(arg);
-	free(lst);
-	return (1);
+	while (*str)
+		ft_putwchar_fd(*str++, fd);
 }
