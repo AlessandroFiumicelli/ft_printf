@@ -6,7 +6,7 @@
 #    By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/09 17:14:51 by alfiumic          #+#    #+#              #
-#    Updated: 2019/05/27 17:26:24 by alfiumic         ###   ########.fr        #
+#    Updated: 2019/05/29 16:19:00 by alfiumic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = ft_printf.c \
        ft_printf_signedtostr.c \
        ft_printf_unsignedtostr_base.c \
        ft_printf_decimaltostr.c \
+	   ft_printf_decimaltostr_tools.c \
        ft_printf_noconv.c \
        ft_printf_scientific.c \
        ft_printf_signed_decimal.c \

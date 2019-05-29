@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:28:47 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/10 15:32:42 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:29:50 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ typedef struct	s_arg
 		j,
 		z
 	}		length_mod;
-	char		type;
+	char	type;
 	int		fd;
-	int			size;
+	int		size;
 }				t_arg;
 
 int				ft_printf_core(int fd, const char *format, va_list *lst);
 int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst);
 int				ft_printf_handler(t_arg *arg, va_list *lst);
-
-// Handlers
-
+/*
+** Handlers
+*/
 int				ft_printf_signed_decimal(t_arg *arg, va_list *lst);
 int				ft_printf_unsigned_decimal(t_arg *arg, va_list *lst);
 int				ft_printf_unsigned_octal(t_arg *arg, va_list *lst);
@@ -61,16 +61,21 @@ int				ft_printf_float(t_arg *arg, va_list *lst);
 int				ft_printf_binary(t_arg *arg, va_list *lst);
 int				ft_printf_scientific(t_arg *arg, va_list *lst);
 int				ft_printf_date(t_arg *arg, va_list *lst);
-
-// Conversion
+/*
+** Conversion
+*/
 void			ft_printf_signedtostr(char *out, intmax_t num, t_arg *arg);
-void			ft_printf_unsignedtostr_base(char *out, uintmax_t num, t_arg *arg, char *base);
+void			ft_printf_unsignedtostr_base(char *out, uintmax_t num, \
+					t_arg *arg, char *base);
 void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg);
-// Utilities
+void			ft_printf_string_builder(char *out, long double n, t_arg *arg);
+/*
+** Utilities
+*/
 void			ft_putnchar(char c, int n, int fd);
 int				ft_int_dgt_cnt(intmax_t n, int base);
 int				ft_uint_dgt_cnt(uintmax_t n, int base);
-int				ft_dec_dgt_cnt(long double, t_arg *arg);
+int				ft_dec_dgt_cnt(long double n, t_arg *arg);
 int				ft_get_int_arg(va_list *lst);
 
 #endif

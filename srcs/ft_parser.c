@@ -6,14 +6,14 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:16:31 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/04 18:43:53 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 15:33:59 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf_internal.h"
-#include "../libft/include/libft.h"
+#include "ft_printf_internal.h"
+#include "libft.h"
 
-static char	g_table[127] =
+static char		g_table[127] =
 {
 	['#'] = 1,
 	['-'] = 1,
@@ -50,20 +50,24 @@ static char	g_table[127] =
 	['X'] = 2,
 	['c'] = 2,
 	['C'] = 2,
-	['f'] = 2
+	['f'] = 2,
+	['F'] = 2
 };
 
-static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
+static int		ft_num_parser(char *str, t_arg *arg, va_list *lst)
 {
 	if (*str == '.')
 	{
 		arg->prec_set = 1;
-		arg->precision = (str[1] == '*') ? ft_get_int_arg(lst) : ft_atoi(str + 1);
-		arg->precision = (arg->precision < 0) ? 0 : arg->precision;
+		arg->precision = (str[1] == '*') ? \
+						ft_get_int_arg(lst) : ft_atoi(str + 1);
+		arg->precision = (arg->precision < 0) ? \
+						0 : arg->precision;
 		if (str[1] == '*')
 			return (2);
 		else
-			return (1 + ft_int_dgt_cnt(arg->precision, 10) - ft_isdigit(str[1]) ? 0 : 1);
+			return (1 + ft_int_dgt_cnt(arg->precision, 10) - \
+					ft_isdigit(str[1]) ? 0 : 1);
 	}
 	else if (ft_isdigit(*str) || *str == '*')
 	{
@@ -75,7 +79,7 @@ static int	ft_num_parser(char *str, t_arg *arg, va_list *lst)
 	return (0);
 }
 
-static int	ft_len_parser(char *str, t_arg *arg)
+static int		ft_len_parser(char *str, t_arg *arg)
 {
 	if (*str == 'h' && *(str + 1) == 'h')
 	{
@@ -98,9 +102,9 @@ static int	ft_len_parser(char *str, t_arg *arg)
 	return (0);
 }
 
-static int	ft_flag_parser(char *str, t_arg *arg)
+static int		ft_flag_parser(char *str, t_arg *arg)
 {
-	if (*str =='#')
+	if (*str == '#')
 		arg->flag_alt = 1;
 	else if (*str == '0')
 		arg->flag_zero = 1;
@@ -115,7 +119,7 @@ static int	ft_flag_parser(char *str, t_arg *arg)
 	return (1);
 }
 
-static int	ft_parser(char *str, t_arg *arg, int len, va_list *lst)
+static int		ft_parser(char *str, t_arg *arg, int len, va_list *lst)
 {
 	int		i;
 	int		cnt;
@@ -136,7 +140,7 @@ static int	ft_parser(char *str, t_arg *arg, int len, va_list *lst)
 	return (1);
 }
 
-int			ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst)
+int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst)
 {
 	int		i;
 	int		isconv;
@@ -147,7 +151,7 @@ int			ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst)
 	{
 		if (g_table[(unsigned char)str[i]] == 0 && !(isconv = 0))
 			break ;
-		i++;	
+		i++;
 	}
 	arg->type = str[i];
 	ft_parser(str + 1, arg, i - 1, lst);

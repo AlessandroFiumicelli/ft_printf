@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_unsignedtostr_base.c                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/29 16:48:17 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/05/29 16:50:36 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdint.h>
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
-void	ft_printf_unsignedtostr_base(char *out, uintmax_t n, t_arg *arg, char *base)
+void	ft_printf_unsignedtostr_base(char *out,\
+		uintmax_t n, t_arg *arg, char *base)
 {
 	int	i;
 	int	size;
@@ -23,7 +35,7 @@ void	ft_printf_unsignedtostr_base(char *out, uintmax_t n, t_arg *arg, char *base
 	{
 		while (n)
 		{
-			out[size-- -1] = base[ft_abs((n % b))];
+			out[size-- - 1] = base[ft_abs((n % b))];
 			n /= b;
 		}
 	}

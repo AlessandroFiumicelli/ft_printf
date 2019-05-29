@@ -6,15 +6,15 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:58:05 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/27 17:13:23 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:43:17 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
-static intmax_t catch_int(t_arg *arg, va_list *lst)
+static intmax_t	catch_int(t_arg *arg, va_list *lst)
 {
 	intmax_t	var;
 
@@ -36,19 +36,18 @@ static intmax_t catch_int(t_arg *arg, va_list *lst)
 	return ((int)var);
 }
 
-static void	ft_padding(char *out, int len, t_arg *arg)
+static void		ft_padding(char *out, int len, t_arg *arg)
 {
-	int	offset;
+	int offset;
 
 	offset = 0;
 	if (arg->size > len)
 	{
 		if (arg->flag_left)
 		{
-			ft_memmove(out, out + (arg->size -len), len);
+			ft_memmove(out, out + (arg->size - len), len);
 			ft_memset(out + len, ' ', arg->size - len);
 		}
-
 	}
 	else if (arg->flag_zero)
 	{
@@ -60,21 +59,21 @@ static void	ft_padding(char *out, int len, t_arg *arg)
 		ft_memset(out, ' ', arg->size - len);
 }
 
-int             ft_printf_signed_decimal(t_arg *arg, va_list *lst)
+int				ft_printf_signed_decimal(t_arg *arg, va_list *lst)
 {
 	intmax_t	num;
 	char		*out;
-	int		len;
+	int			len;
 
 	num = catch_int(arg, lst);
-	len = ft_max(ft_int_dgt_cnt(num, 10), arg->precision) \
-	      + ((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
+	len = ft_max(ft_int_dgt_cnt(num, 10), arg->precision) +\
+		((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
 	if (num == 0 && arg->prec_set && arg->precision == 0)
 		len--;
 	arg->size = ft_max(arg->width, len);
 	if (!(out = ft_strnew(arg->size)))
 		return (0);
-	if  (arg->flag_left || arg->prec_set)
+	if (arg->flag_left || arg->prec_set)
 		arg->flag_zero = 0;
 	ft_printf_signedtostr(out + (arg->size - len), num, arg);
 	ft_padding(out, len, arg);

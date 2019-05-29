@@ -6,13 +6,13 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:59:22 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:53:24 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:52:12 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 static void		putnwstr(const wchar_t *str, size_t size, int fd)
 {

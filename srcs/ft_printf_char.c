@@ -6,13 +6,13 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:57:10 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/04/09 17:46:22 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 15:37:54 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 static void	ft_padding(char c, t_arg *arg, int len)
 {
@@ -39,8 +39,7 @@ static void	ft_padding(char c, t_arg *arg, int len)
 	arg->size = ft_max(len, arg->width);
 }
 
-
-int	ft_printf_char(t_arg *arg, va_list *lst)
+int			ft_printf_char(t_arg *arg, va_list *lst)
 {
 	char	c;
 	size_t	len;

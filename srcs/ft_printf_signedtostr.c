@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_signedtostr.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/29 16:43:51 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/05/29 16:44:44 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdint.h>
-#include "../includes/ft_printf_internal.h"
-#include "../includes/ft_printf.h"
-#include "../libft/include/libft.h"
+#include "ft_printf_internal.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static int	getlen(int len, intmax_t num, t_arg *arg)
 {

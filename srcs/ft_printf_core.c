@@ -1,24 +1,36 @@
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf_internal.h"
-#include "../includes/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_core.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/29 15:38:11 by alfiumic          #+#    #+#             */
+/*   Updated: 2019/05/29 15:44:10 by alfiumic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int      ft_printf_arg(char **str, va_list *lst, int fd)
+#include "libft.h"
+#include "ft_printf_internal.h"
+#include "ft_printf.h"
+
+static int		ft_printf_arg(char **str, va_list *lst, int fd)
 {
-        t_arg   arg;
-        int     len;
+	t_arg		arg;
+	int			len;
 
-        ft_bzero(&arg, sizeof(t_arg));
-        arg.fd = fd;
-        len = ft_printf_parse_arg(*str, &arg, lst);
-        ft_printf_handler(&arg, lst);
-        *str += len;
-        return (arg.size);
+	ft_bzero(&arg, sizeof(t_arg));
+	arg.fd = fd;
+	len = ft_printf_parse_arg(*str, &arg, lst);
+	ft_printf_handler(&arg, lst);
+	*str += len;
+	return (arg.size);
 }
 
-int	ft_printf_core(int fd, const char *format, va_list *lst)
+int				ft_printf_core(int fd, const char *format, va_list *lst)
 {
 	char	*cursor;
-	int	out;
+	int		out;
 
 	cursor = (char*)format;
 	out = 0;

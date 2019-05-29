@@ -6,13 +6,13 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:58:46 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/27 17:14:45 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:47:45 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
-#include "../includes/ft_printf.h"
-#include "../includes/ft_printf_internal.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 static uintmax_t	catch_int(t_arg *arg, va_list *lst)
 {
