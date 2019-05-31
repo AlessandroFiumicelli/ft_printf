@@ -33,6 +33,8 @@ void	ft_printf_unsignedtostr_base(char *out,\
 		out[i] = '0';
 	else
 	{
+		if (n == 0)
+			out[size-- -1] = 0 + '0';
 		while (n)
 		{
 			out[size-- - 1] = base[ft_abs((n % b))];

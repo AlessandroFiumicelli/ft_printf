@@ -55,6 +55,8 @@ void		ft_printf_signedtostr(char *out, intmax_t n, t_arg *arg)
 		out[index] = '0';
 	else
 	{
+		if (n == 0)
+		out[size-- -1] = 0 + '0';
 		while (n)
 		{
 			out[size-- - 1] = ft_abs((n % 10)) + '0';

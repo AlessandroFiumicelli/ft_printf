@@ -12,7 +12,6 @@
 
 #include <stdarg.h>
 #include "libft.h"
-#include "ft_printf_internal.h"
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)

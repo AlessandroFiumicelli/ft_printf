@@ -90,12 +90,16 @@ static int		ft_len_parser(char *str, t_arg *arg)
 		arg->length_mod = ft_max(arg->length_mod, ll);
 		return (2);
 	}
-	else if (*str == 'h' || *str == 'l')
+	else if (*str == 'h' || *str == 'l' || *str == 'j' || *str == 'z')
 	{
 		if (*str == 'h')
 			arg->length_mod = ft_max(arg->length_mod, h);
 		else if (*str == 'l')
 			arg->length_mod = ft_max(arg->length_mod, l);
+		else if (*str == 'j')
+			arg->length_mod = ft_max(arg->length_mod, j);
+		else if (*str == 'z')
+			arg->length_mod = ft_max(arg->length_mod, z);
 		return (1);
 	}
 	return (0);
