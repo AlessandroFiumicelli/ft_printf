@@ -40,7 +40,6 @@ typedef struct	s_arg
 	int		size;
 }				t_arg;
 
-int				ft_printf_core(int fd, const char *format, va_list *lst);
 int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst);
 int				ft_printf_handler(t_arg *arg, va_list *lst);
 /*

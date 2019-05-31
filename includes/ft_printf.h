@@ -12,7 +12,10 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include <stdarg.h>
 
 int	ft_printf(const char *format, ...);
+int	ft_printf_core(int fd, const char *format, va_list *lst);
+
 
 #endif
