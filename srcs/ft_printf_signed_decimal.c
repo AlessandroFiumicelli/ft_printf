@@ -66,8 +66,8 @@ int				ft_printf_signed_decimal(t_arg *arg, va_list *lst)
 	int			len;
 
 	num = catch_int(arg, lst);
-	len = ft_max(ft_int_dgt_cnt(num, 10), arg->precision) +\
-		((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
+	len = ft_max(ft_int_dgt_cnt(num, 10), arg->precision) \
+		+ ((num < 0 || arg->flag_sign || arg->flag_space) ? 1 : 0);
 	if (num == 0 && arg->prec_set && arg->precision == 0)
 		len--;
 	arg->size = ft_max(arg->width, len);
