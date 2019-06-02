@@ -51,8 +51,8 @@ void		ft_printf_signedtostr(char *out, intmax_t n, t_arg *arg)
 	index += putmodifiers(out + index, n, arg);
 	while (index < size - len)
 		out[index++] = '0';
-	if (n == 0 && !(arg->prec_set && arg->precision == 0))
-		out[index] = '0';
+	if (n == 0 && (arg->prec_set && arg->precision == 0))
+		out[index] = ' ';
 	else
 	{
 		if (n == 0)

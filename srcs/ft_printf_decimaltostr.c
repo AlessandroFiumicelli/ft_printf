@@ -52,7 +52,7 @@ void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
 	while (index < size - len)
 		out[index++] = '0';
 	if (n == 0 && !(arg->prec_set && arg->precision == 0))
-		out[index] = '0';
+		out[index] = ' ';
 	else
 		ft_printf_string_builder(out, n, arg);
 }
