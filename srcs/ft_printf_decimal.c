@@ -40,15 +40,15 @@ static void			ft_padding(char *out, int len, t_arg *arg)
 			ft_memmove(out, out + (arg->size - len), len);
 			ft_memset(out + len, ' ', arg->size - len);
 		}
+		else if (arg->flag_zero)
+		{
+			if (!(ft_isdigit(out[arg->size - len])))
+				out[offset++] = out[arg->size - len];
+			ft_memset(out + offset, '0', arg->size - len);
+		}
+		else
+			ft_memset(out, ' ', arg->size - len);
 	}
-	else if (arg->flag_zero)
-	{
-		if (!(ft_isdigit(out[arg->size - len])))
-			out[offset++] = out[arg->size - len];
-		ft_memset(out + offset, '0', arg->size - len);
-	}
-	else
-		ft_memset(out, ' ', arg->size - len);
 }
 
 int					ft_printf_decimal(t_arg *arg, va_list *lst)
