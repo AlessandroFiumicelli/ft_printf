@@ -176,17 +176,47 @@ int	main(void)
 
 	ft_printf("\n");
 	ft_printf("# 0181 ft_printf(u, 4294967296):\n");
-	ft_printf("- ft_printf:%ud\n", 4294967296);
-	printf("-    printf:%ud\n", 4294967296);
+	ft_printf("- ft_printf:%u\n", 4294967296);
+	printf("-    printf:%u\n", 4294967296);
 
 	ft_printf("\n");
 	ft_printf("# 0192 ft_printf(ju, 4999999999):\n");
-	ft_printf("- ft_printf:%jud\n", 4999999999);
-	printf("-    printf:%jud\n", 4999999999);
+	ft_printf("- ft_printf:%ju\n", 4999999999);
+	printf("-    printf:%ju\n", 4999999999);
 
 	ft_printf("\n");
 	ft_printf("# 0193 ft_printf(ju, 4294967296):\n");
-	ft_printf("- ft_printf:%jud\n", 4294967296);
-	printf("-    printf:%jud\n", 4294967296);
+	ft_printf("- ft_printf:%ju\n", 4294967296);
+	printf("-    printf:%ju\n", 4294967296);
+
+	ft_printf("\n");
+	ft_printf("# 0194 ft_printf(f, 3.14):\n");
+	ft_printf("- ft_printf:%f\n", 3.14);
+	printf("-    printf:%f\n", 3.14);
+
+	ft_printf("\n");
+	ft_printf("# 0195 ft_printf(f, 0.0):\n");
+	ft_printf("- ft_printf:%f\n", 0.0);
+	printf("-    printf:%fo\n", 0.0);
+	
+	ft_printf("\n");
+	ft_printf("# 0196 ft_printf(.f .0f, 0.0, 0.0):\n");
+	ft_printf("- ft_printf:%.f %.0f\n", 0.0, 0.0);
+	printf("-    printf:%.f %.0f\n", 0.0, 0.0);
+
+	ft_printf("\n");
+	ft_printf("# 0197 ft_printf(5.f 5.0f, 0.0, 0.0):\n");
+	ft_printf("- ft_printf:%5.f %5.f\n", 0.0, 0.0);
+	printf("-    printf:%5.f %5.0f\n", 0.0, 0.0);
+
+	ft_printf("\n");
+	ft_printf("# 0198 ft_printf(#.f #.0f, 0.0, 0.0):\n");
+	ft_printf("- ft_printf:%#.f %#.0f\n", 0.0, 0.0);
+	printf("-    printf:%#.f %#.0f\n", 0.0, 0.0);
+
+	ft_printf("\n");
+	ft_printf("# 0199 ft_printf(-2.2f 10.2f, 3.14, 3.14):\n");
+	ft_printf("- ft_printf:%-2.2f %10.2f\n", 3.14, 3.14);
+	printf("-    printf:%#2.2f %10.2f\n", 3.14, 3.14);
 	return (0);
 }
