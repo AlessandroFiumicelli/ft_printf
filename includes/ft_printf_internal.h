@@ -67,6 +67,7 @@ void			ft_printf_unsignedtostr_base(char *out, uintmax_t num, \
 					t_arg *arg, char *base);
 void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg);
 void			ft_printf_string_builder(char *out, long double n, t_arg *arg);
+void 			ft_printf_zero_cases_f(char *out, long double n, t_arg *arg, int index);
 /*
 ** Utilities
 */

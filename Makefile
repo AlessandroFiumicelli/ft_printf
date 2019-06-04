@@ -25,7 +25,8 @@ SRCS = ft_printf.c \
        ft_printf_signedtostr.c \
        ft_printf_unsignedtostr_base.c \
        ft_printf_decimaltostr.c \
-	ft_printf_decimaltostr_tools.c \
+			 ft_printf_decimaltostr_tools.c \
+			 ft_printf_zero_cases_f.c \
        ft_printf_noconv.c \
        ft_printf_scientific.c \
        ft_printf_signed_decimal.c \
@@ -82,7 +83,7 @@ CFLAGS = -Wall -Werror -Wextra -c
 
 all: comp_libft $(NAME)
 
-$(NAME): $(OBJECTS) 
+$(NAME): $(OBJECTS)
 	@ echo -n "Creating library: $(NAME) "
 	@ ar rc $(NAME) $(OBJECTS) $(LIBOBJS)
 	@ ranlib $(NAME)
