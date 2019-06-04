@@ -22,12 +22,14 @@ static char		*ft_right_field(intmax_t n)
 	size = ft_int_dgt_cnt(n, 10);
 	if (!(out = ft_strnew(size + 1)))
 		return (0);
-	while (n)
-	{
-		out[size-- - 1] = ft_abs((n % 10)) + '0';
-		n /= 10;
-	}
 	out[0] = '.';
+	ft_memset(&out[1], 48, size - 1);
+	while (out[size] != '.')
+	{
+		out[size] = ft_abs((n % 10)) + '0';
+		n /= 10;
+		size--;
+	}
 	return (out);
 }
 
@@ -73,6 +75,7 @@ void			ft_printf_string_builder(char *out, long double n, t_arg *arg)
 	char		*right_field;
 	char		*left_field;
 	char		*tmp;
+
 
 	n_left = (intmax_t)n;
 	n_right = ft_n_right(n, arg);

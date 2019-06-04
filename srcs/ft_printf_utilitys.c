@@ -61,7 +61,9 @@ int		ft_dec_dgt_cnt(long double num, t_arg *arg)
 
 	size = 0;
 	n_left = (intmax_t)num;
-	n = num - n_left;
+	n = (num - (long double)n_left);
+	if (!(arg->prec_set) && arg->precision == 0)
+		arg->precision = 6;
 	while (size < arg->precision)
 	{
 		n = n * 10;

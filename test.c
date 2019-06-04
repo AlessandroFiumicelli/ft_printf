@@ -197,7 +197,7 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("# 0195 ft_printf(f, 0.0):\n");
 	ft_printf("- ft_printf:%f\n", 0.0);
-	printf("-    printf:%fo\n", 0.0);
+	printf("-    printf:%f\n", 0.0);
 	
 	ft_printf("\n");
 	ft_printf("# 0196 ft_printf(.f .0f, 0.0, 0.0):\n");

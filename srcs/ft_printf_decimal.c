@@ -16,16 +16,13 @@
 
 static long double	catch_dec(t_arg *arg, va_list *lst)
 {
-	long double	var;
-
-	var = va_arg(*lst, long double);
 	if (arg->type == 'F')
 		arg->length_mod = ll;
-	else if (arg->length_mod == l)
-		return ((double)var);
+	if (arg->length_mod == l)
+		return ((double)va_arg(*lst, double));
 	else if (arg->length_mod == ll)
-		return ((long double)var);
-	return ((float)var);
+		return ((long double)va_arg(*lst,  long double));
+	return ((double)va_arg(*lst, double));
 }
 
 static void			ft_padding(char *out, int len, t_arg *arg)

@@ -39,7 +39,12 @@ static int		putmodifiers(char *str, long double n, t_arg *arg)
 	return (1);
 }
 
-void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
+static void ft_zero_cases_f(char *out, long double n, t_arg *arg)
+{
+	
+}
+
+void				ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
 {
 	int	size;
 	int	len;
@@ -51,8 +56,8 @@ void			ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
 	index += putmodifiers(out + index, n, arg);
 	while (index < size - len)
 		out[index++] = '0';
-	if (n == 0 && !(arg->prec_set && arg->precision == 0))
-		out[index] = ' ';
+	if (n >= 0 && n < 1))
+		ft_zero_cases_f(out,n, arg);
 	else
 		ft_printf_string_builder(out, n, arg);
 }
