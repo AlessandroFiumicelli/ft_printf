@@ -40,7 +40,7 @@ int	main(void)
 	printf("-    printf:%#6.f %#6.0f\n", 0.0, 0.0);
 
 	ft_printf("\n");
-	ft_printf("# 0201 ft_printf(6.f 6.0f, 0.0314, 0.0314):\n");
+	ft_printf("# 0201 ft_printf(ff, 0.0314, 0.0314):\n");
 	ft_printf("- ft_printf:%f %f\n", 0.0314, 0.0314);
 	printf("-    printf:%f %f\n", 0.0314, 0.0314);
 	return (0);

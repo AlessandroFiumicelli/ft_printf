@@ -49,14 +49,11 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 	}
 	else
 	{
-		if (n == 0)
-			out[len-- - 1] = '0';
-		while (n > 0)
-		{
-			if (size == (arg->precision))
-				out[len-- - 1] = '.';
-			else
-				out[len-- - 1] = (n % 10) + '0';
+		out[arg->precision] = '.';
+		while ( n || size > arg->precision + 1)
+		{	if (size == arg->precision)
+				len--;
+			out[len-- - 1] = (n % 10) + '0';
 			n /= 10;
 			size++;
 		}
