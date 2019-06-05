@@ -38,7 +38,7 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 	int	size;
 
 	len = ft_float_dgt_cnt(n, arg);
-	size = len;
+	size = 0;
 	index = 0;
 	index += putmodifiers(out + index, n, arg);
 	if (n == 0 && (arg->prec_set && arg->precision == 0))
@@ -50,14 +50,15 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 	else
 	{
 		if (n == 0)
-			out[size-- - 1] = '0';
+			out[len-- - 1] = '0';
 		while (n > 0)
 		{
-			if (size == (len - arg->precision))
-				out[size-- - 1] = '.';
+			if (size == (arg->precision))
+				out[len-- - 1] = '.';
 			else
-				out[size-- - 1] = (n % 10) + '0';
+				out[len-- - 1] = (n % 10) + '0';
 			n /= 10;
+			size++;
 		}
 	}
 }
