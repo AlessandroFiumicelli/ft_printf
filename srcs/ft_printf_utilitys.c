@@ -37,6 +37,21 @@ int		ft_int_dgt_cnt(intmax_t n, int base)
 	return (ret);
 }
 
+int		ft_float_dgt_cnt(uintmax_t n, t_arg *arg)
+{
+	int	ret;
+
+	ret = (n == 0) ? 1 : 0;
+	while (n)
+	{
+		ret++;
+		n /= 10;
+	}
+	ret += ((arg->neg || arg->flag_sign || arg->flag_space) ? 1 : 0) + 1;
+	ret -= (!arg->flag_alt && arg->prec_set && arg->precision == 0) ? 1 : 0;
+	return (ret);
+}
+
 int		ft_uint_dgt_cnt(uintmax_t n, int base)
 {
 	int	ret;
@@ -50,28 +65,6 @@ int		ft_uint_dgt_cnt(uintmax_t n, int base)
 		n /= base;
 	}
 	return (ret);
-}
-
-int		ft_dec_dgt_cnt(long double num, t_arg *arg)
-{
-	intmax_t	size;
-	intmax_t	n_left;
-	intmax_t	n_right;
-	long double	n;
-
-	size = 0;
-	n_left = (intmax_t)num;
-	n = (num - (long double)n_left);
-	if (!(arg->prec_set) && arg->precision == 0)
-		arg->precision = 6;
-	while (size < arg->precision)
-	{
-		n = n * 10;
-		size++;
-	}
-	n_right = (intmax_t)n;
-	size = ft_int_dgt_cnt(n_left, 10) + 1 + ft_int_dgt_cnt(n_right, 10);
-	return (size);
 }
 
 int		ft_get_int_arg(va_list *lst)

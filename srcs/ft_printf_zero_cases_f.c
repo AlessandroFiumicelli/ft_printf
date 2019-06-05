@@ -22,7 +22,7 @@ void ft_printf_zero_cases_f(char *out, long double n, t_arg *arg, int index)
       if (arg->flag_alt)
       {
         out[index] = '0';
-        out[++index] = '.';
+        out[index + 1] = '.';
       }
       else
         out[index] = '0';

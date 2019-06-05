@@ -15,14 +15,6 @@
 #include "ft_printf.h"
 #include "ft_printf_internal.h"
 
-static int		getlen(int len, long double n, t_arg *arg)
-{
-	len = ft_max(len, arg->precision);
-	if (n < 0 || arg->flag_space || arg->flag_sign)
-		len++;
-	return (len);
-}
-
 static int		putmodifiers(char *str, long double n, t_arg *arg)
 {
 	if (n < 0)
@@ -39,20 +31,33 @@ static int		putmodifiers(char *str, long double n, t_arg *arg)
 	return (1);
 }
 
-void				ft_printf_decimaltostr(char *out, long double n, t_arg *arg)
+void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 {
-	int	size;
 	int	len;
 	int	index;
+	int	size;
 
-	len = ft_dec_dgt_cnt(n, arg);
-	size = getlen(len, n, arg);
+	len = ft_float_dgt_cnt(n, arg);
+	size = len;
 	index = 0;
 	index += putmodifiers(out + index, n, arg);
-	while (index < size - len)
-		out[index++] = '0';
-	if (n >= -1 && n < 1)
-		ft_printf_zero_cases_f(out,n, arg, index);
+	if (n == 0 && (arg->prec_set && arg->precision == 0))
+	{
+		out[index] = '0';
+		if (arg->flag_alt)
+			out[++index] = '.';
+	}
 	else
-		ft_printf_string_builder(out, n, arg);
+	{
+		if (n == 0)
+			out[size-- - 1] = '0';
+		while (n > 0)
+		{
+			if (size == (len - arg->precision))
+				out[size-- - 1] = '.';
+			else
+				out[size-- - 1] = (n % 10) + '0';
+			n /= 10;
+		}
+	}
 }
