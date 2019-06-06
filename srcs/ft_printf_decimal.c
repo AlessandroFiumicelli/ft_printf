@@ -29,6 +29,7 @@ static long double	catch_dec(t_arg *arg, va_list *lst)
 		num = (long double)va_arg(*lst,  long double);
 	num = (double)va_arg(*lst, double);
 	arg->precision = (!arg->prec_set) ? 6 : arg->precision;
+	arg->n_f = (long double)(num < 0) ? -num : num;
 	while (i < arg->precision)
 	{
 		num = num * 10;
@@ -80,7 +81,7 @@ int					ft_printf_decimal(t_arg *arg, va_list *lst)
 		return (0);
 	if (arg->flag_left || arg->prec_set)
 		arg->flag_zero = 0;
-	ft_memset(out, 48, arg->size - 1);
+	ft_memset(out, 48, arg->size);
 	ft_printf_decimaltostr(out + (arg->size - len), n, arg);
 	ft_padding(out, len, arg);
 	ft_putstr_fd(out, arg->fd);

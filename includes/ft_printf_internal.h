@@ -39,6 +39,7 @@ typedef struct	s_arg
 	int		fd;
 	int		neg;
 	int		size;
+	long double	n_f;
 }				t_arg;
 
 int				ft_printf_parse_arg(char *str, t_arg *arg, va_list *lst);

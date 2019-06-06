@@ -35,10 +35,14 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 {
 	int	len;
 	int	index;
+	int	i;
 	int	size;
+	int dot;
 
 	len = ft_float_dgt_cnt(n, arg);
-	size = 0;
+	size = len;
+	dot = (size - arg->precision) - 1;
+	i = 0;
 	index = 0;
 	index += putmodifiers(out + index, n, arg);
 	if (n == 0 && (arg->prec_set && arg->precision == 0))
@@ -47,15 +51,17 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 		if (arg->flag_alt)
 			out[++index] = '.';
 	}
-	else
+	else if (n == 0 && (arg->prec_set && arg->precision > 0))
+		out[dot - 1] = '.';
 	{
-		out[arg->precision] = '.';
-		while ( n || size > arg->precision + 1)
-		{	if (size == arg->precision)
+		out[dot] = '.';
+		while (n)
+		{
+			if (len - 1 == dot)
 				len--;
-			out[len-- - 1] = (n % 10) + '0';
+			out[len-- -1] = (n % 10) + '0';
 			n /= 10;
-			size++;
+			i++;
 		}
 	}
 }

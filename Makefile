@@ -89,7 +89,7 @@ $(NAME): $(OBJECTS)
 
 %.o: $(SRCDIR)%.c $(HEADERS)
 	@ echo "compiling $<"
-	@ $(CC) $(CFLAGS) $< $(INCLUDES)
+	@ $(CC) -g $(CFLAGS) $< $(INCLUDES)
 
 comp_libft:
 	@ make -C ./libft/

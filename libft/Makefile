@@ -94,7 +94,7 @@ DEP = $(addprefix .d/,$(notdir $(SRCS:.c=.d)))
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-COMPILE.c = $(CC) $(CFLAGS) -c
+COMPILE.c = $(CC) $(CFLAGS) -c -g
 OUTPUT_OPTION = -MMD -MP -MF $(patsubst %.o,.d/%.d,$(notdir $@)) -o $@
 
 obj/%.o: srcs/%.c
