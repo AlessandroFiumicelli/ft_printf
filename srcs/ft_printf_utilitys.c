@@ -47,7 +47,7 @@ int		ft_float_dgt_cnt(uintmax_t n, t_arg *arg)
 		ret++;
 		n /= 10;
 	}
-	ret++; //aggiungo lo spazzio per il punto
+	ret += 1;
 	ret += ((arg->neg || arg->flag_sign || arg->flag_space) ? 1 : 0);
 	ret -= (!arg->flag_alt && arg->prec_set && arg->precision == 0) ? 1 : 0;
 	ret += (arg->n_f > 0 && arg->n_f < 1) ? ((arg->precision - ret) + 2) : 0;

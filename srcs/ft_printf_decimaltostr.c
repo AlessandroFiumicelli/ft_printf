@@ -15,26 +15,22 @@
 #include "ft_printf.h"
 #include "ft_printf_internal.h"
 
-static int		putmodifiers(char *str, long double n, t_arg *arg)
+static void			putmodifiers(char *str, t_arg *arg)
 {
-	if (n < 0)
-		*str = '-';
+	if (arg->neg)
+		str[0] = '-';
 	else
 	{
 		if (arg->flag_sign)
-			*str = '+';
+			str[0] = '+';
 		else if (arg->flag_space)
-			*str = ' ';
-		else
-			return (0);
+			str[0] = ' ';
 	}
-	return (1);
 }
 
 void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 {
 	int	len;
-	int	index;
 	int	i;
 	int	size;
 	int dot;
@@ -43,25 +39,15 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 	size = len;
 	dot = (size - arg->precision) - 1;
 	i = 0;
-	index = 0;
-	index += putmodifiers(out + index, n, arg);
-	if (n == 0 && (arg->prec_set && arg->precision == 0))
-	{
-		out[index] = '0';
-		if (arg->flag_alt)
-			out[++index] = '.';
-	}
-	else if (n == 0 && (arg->prec_set && arg->precision > 0))
-		out[dot - 1] = '.';
-	{
+	putmodifiers(out, arg);
+	if (n > 0 || arg->precision > 0 || arg->flag_alt)
 		out[dot] = '.';
-		while (n)
-		{
-			if (len - 1 == dot)
-				len--;
-			out[len-- -1] = (n % 10) + '0';
-			n /= 10;
-			i++;
-		}
+	while (n)
+	{
+		if (len - 1 == dot)
+			len--;
+		out[len-- -1] = (n % 10) + '0';
+		n /= 10;
+		i++;
 	}
 }

@@ -17,7 +17,7 @@
 static long double	catch_dec(t_arg *arg, va_list *lst)
 {
 	long double	num;
-	int					i;
+	int		i;
 
 	i = 0;
 	num = 0;
@@ -36,11 +36,8 @@ static long double	catch_dec(t_arg *arg, va_list *lst)
 		i++;
 	}
 	if (num < 0)
-	{
-		num *= -1;
 		arg->neg = 1;
-	}
-	return (num);
+	return (arg->neg) ? -num : num;
 }
 
 static void			ft_padding(char *out, int len, t_arg *arg)
