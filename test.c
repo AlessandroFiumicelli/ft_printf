@@ -247,12 +247,12 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("# 0205 ft_printf(-2.2f 10.2f, 0.0314, 0.0314):\n");
 	ft_printf("- ft_printf:%-2.2f %10.2f\n", 0.0314, 0.0314);
-	printf("-    printf:%#-2.2f %10.2f\n", 0.0314, 0.0314);
+	printf("-    printf:%-2.2f %10.2f\n", 0.0314, 0.0314);
 
 	ft_printf("\n");
 	ft_printf("ret | # 0206 ft_printf(-2.2f 10.2f, -0.0314, -0.0314):\n");
-	ft_printf("%d  | - ft_printf:%-2.2f %10.2f\n", ft_printf("%-2.2f %10.2f\n", -0.0314, -0.0314), -0.0314, -0.0314);
-	   printf("%d  | -    printf:%#-2.2f %10.2f\n", printf("%-2.2f %10.2f\n", -0.0314, -0.0314), -0.0314, -0.0314);
+	ft_printf("%d  | - ft_printf:", ft_printf("%-2.2f %10.2f\n", -0.0314, -0.0314));
+	   printf("%d  | -    printf:", printf("%-2.2f %10.2f\n", -0.0314, -0.0314));
 
 	return (0);
 }

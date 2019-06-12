@@ -4,13 +4,7 @@
 
 int	main(void)
 {
-	ft_printf("\n");
-	ft_printf("# 0194 ft_printf(f, 3.14):\n");
-	ft_printf("%f\n", 3.14);
-
-	ft_printf("\n");
-	ft_printf("# 0195 ft_printf(f, 0):\n");
-	ft_printf("%f\n", 0.0);
+	ft_printf("%2.2f\n", 0.0314);
 	return (0);
 
 }
