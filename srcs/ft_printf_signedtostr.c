@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 16:43:51 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 16:44:44 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/06/19 13:37:03 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		ft_printf_signedtostr(char *out, intmax_t n, t_arg *arg)
 	else
 	{
 		if (n == 0)
-		out[size-- -1] = 0 + '0';
+			out[size-- - 1] = 0 + '0';
 		while (n)
 		{
 			out[size-- - 1] = ft_abs((n % 10)) + '0';

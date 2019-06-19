@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:28:47 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 16:29:50 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/06/19 13:33:36 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 typedef struct	s_arg
 {
-	int		flag_alt;
-	int		flag_zero;
-	int		flag_left;
-	int		flag_space;
-	int		flag_sign;
-	int		width;
-	int		prec_set;
-	int		precision;
+	int			flag_alt;
+	int			flag_zero;
+	int			flag_left;
+	int			flag_space;
+	int			flag_sign;
+	int			width;
+	int			prec_set;
+	int			precision;
 	enum
 	{
 		none,
@@ -34,11 +34,11 @@ typedef struct	s_arg
 		ll,
 		j,
 		z
-	}		length_mod;
-	char	type;
-	int		fd;
-	int		neg;
-	int		size;
+	}			length_mod;
+	char		type;
+	int			fd;
+	int			neg;
+	int			size;
 	long double	n_f;
 }				t_arg;
 

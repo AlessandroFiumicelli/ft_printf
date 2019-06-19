@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:52:00 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 16:28:15 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/06/19 13:35:25 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void				ft_printf_decimaltostr(char *out, uintmax_t n, t_arg *arg)
 	{
 		if (len - 1 == dot)
 			len--;
-		out[len-- -1] = (n % 10) + '0';
+		out[len-- - 1] = (n % 10) + '0';
 		n /= 10;
 		i++;
 	}

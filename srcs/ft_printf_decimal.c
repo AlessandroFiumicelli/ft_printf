@@ -6,7 +6,7 @@
 /*   By: alfiumic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 15:44:52 by alfiumic          #+#    #+#             */
-/*   Updated: 2019/05/29 15:51:39 by alfiumic         ###   ########.fr       */
+/*   Updated: 2019/06/19 13:36:27 by alfiumic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static long double	catch_dec(t_arg *arg, va_list *lst)
 {
 	long double	num;
-	int		i;
+	int			i;
 
 	i = 0;
 	num = 0;
@@ -26,7 +26,7 @@ static long double	catch_dec(t_arg *arg, va_list *lst)
 	if (arg->length_mod == l)
 		num = (double)va_arg(*lst, double);
 	else if (arg->length_mod == ll)
-		num = (long double)va_arg(*lst,  long double);
+		num = (long double)va_arg(*lst, long double);
 	num = (double)va_arg(*lst, double);
 	arg->precision = (!arg->prec_set) ? 6 : arg->precision;
 	arg->n_f = (long double)(num < 0) ? -num : num;
@@ -66,7 +66,7 @@ static void			ft_padding(char *out, int len, t_arg *arg)
 int					ft_printf_decimal(t_arg *arg, va_list *lst)
 {
 	long double	num;
-	uintmax_t		n;
+	uintmax_t	n;
 	char		*out;
 	int			len;
 
